@@ -119,14 +119,13 @@ button { font: inherit; }
 .nav.is-scrolled .brand__mark { width: 60px; }
 .brand__mark img { width: 100%; height: auto; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s ease-out, filter .3s; filter: drop-shadow(0 0 0 rgba(125,193,46,0)); }
 .brand:hover .brand__mark img { filter: drop-shadow(0 0 14px rgba(125,193,46,.7)); }
-.brand.is-spin .brand__mark img { animation: logoSpin .9s cubic-bezier(.2,.8,.2,1); }
-@keyframes logoSpin { from { transform: rotateY(0); } to { transform: rotateY(360deg); } }
 .brand__shine { position: absolute; inset: 0; pointer-events: none; -webkit-mask: url(../assets/logo-mark.png) center / contain no-repeat; mask: url(../assets/logo-mark.png) center / contain no-repeat; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.85) 50%, transparent 65%); background-size: 250% 100%; background-position: 150% 0; animation: logoShine 5s ease-in-out infinite; }
 .brand:hover .brand__shine { animation-duration: 1.2s; }
 @keyframes logoShine { 0%, 60% { background-position: 150% 0; } 100% { background-position: -100% 0; } }
 .brand__text { font: 700 31px/1 var(--display); letter-spacing: -.01em; transition: font-size .3s, letter-spacing .3s; }
-.brand__text b { color: var(--g-2); display: inline-block; transition: transform .4s cubic-bezier(.2,.8,.2,1); }
-.brand:hover .brand__text b { transform: rotate(90deg) scale(1.15); color: var(--g-1); }
+.brand__text b { color: var(--g-2); display: inline-block; transition: color .3s; }
+.brand:hover .brand__text b { color: var(--g-1); animation: xSpin .8s cubic-bezier(.2,.8,.2,1); }
+@keyframes xSpin { from { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(1.2); } to { transform: rotate(360deg) scale(1); } }
 .brand:hover .brand__text { letter-spacing: .01em; }
 .nav__links { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
 .nav__links a:not(.btn) { position: relative; color: var(--on-dark-2); font-size: 15px; font-weight: 500; transition: color .2s; white-space: nowrap; }

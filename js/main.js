@@ -44,6 +44,17 @@
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
   }, { passive: true });
 
+  // Mobile menu
+  const setMenu = (open) => {
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  links.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 860) setMenu(false); });
+
   // Interactive logo: tilts toward the cursor, spins on click
   const brand = document.getElementById('brand');
   const mark = brand.querySelector('.brand__mark');
@@ -60,22 +71,19 @@
       mark.style.setProperty('--rx', '0deg');
     });
   }
-  brand.addEventListener('click', () => {
-    brand.classList.remove('is-spin');
-    void brand.offsetWidth;
-    brand.classList.add('is-spin');
+  // Click: full 3D spin of the logo and smooth scroll back to the top
+  const x = brand.querySelector('.brand__text b');
+  brand.addEventListener('click', (e) => {
+    e.preventDefault();
+    setMenu(false);
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    if (reduceMotion || !mark.animate) return;
+    mark.animate(
+      [{ transform: 'perspective(500px) rotateY(0deg)' }, { transform: 'perspective(500px) rotateY(360deg)' }],
+      { duration: 900, easing: 'cubic-bezier(.2,.8,.2,1)' },
+    );
+    x.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], { duration: 900, easing: 'cubic-bezier(.2,.8,.2,1)' });
   });
-
-  // Mobile menu
-  const setMenu = (open) => {
-    nav.classList.toggle('is-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  };
-  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
-  links.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
-  window.addEventListener('resize', () => { if (window.innerWidth > 860) setMenu(false); });
 
   // Highlight the nav link for the section in view
   const navMap = new Map([...links.querySelectorAll('a[href^="#"]:not(.btn)')].map((a) => [a.getAttribute('href').slice(1), a]));
