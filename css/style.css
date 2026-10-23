@@ -423,6 +423,10 @@ button { font: inherit; }
 .form__status { font-size: 14px; color: var(--on-dark-2); text-align: center; min-height: 1.4em; }
 .form__status.is-ok { color: var(--g-1); }
 .form__status.is-err { color: #f0937f; }
+.form__fallback { padding: 16px; border-radius: 12px; border: 1px dashed rgba(125,193,46,.4); background: rgba(125,193,46,.05); animation: fade .4s ease; }
+.form__fallback p { font-size: 14px; color: var(--on-dark-2); margin-bottom: 12px; text-align: center; }
+.form__fallback-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+@media (max-width: 640px) { .form__fallback-actions .btn { flex: 1 1 100%; } }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
 /* Footer */

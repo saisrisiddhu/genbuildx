@@ -587,7 +587,7 @@
             letsconnect@genbuildx.com
           </a>
         </div>
-        <form class="form reveal" id="contactForm" data-key="__WEB3FORMS_KEY__" novalidate>
+        <form class="form reveal" id="contactForm" data-key="83150de8-5058-43ad-83d8-19731c0a5572" novalidate>
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__row">
             <label>Full name<input name="name" type="text" autocomplete="name" required></label>
@@ -617,6 +617,14 @@
           <label>Project details<textarea name="message" rows="4" required></textarea></label>
           <button type="submit" class="btn btn--primary btn--block" id="formSubmit">Send Enquiry</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          <div class="form__fallback" id="formFallback" hidden>
+            <p>You can also send your enquiry directly. Your details are already filled in:</p>
+            <div class="form__fallback-actions">
+              <a class="btn btn--sm btn--primary" id="fbGmail" href="#" target="_blank" rel="noopener">Send via Gmail</a>
+              <a class="btn btn--sm btn--ghost" id="fbMail" href="#">Open email app</a>
+              <button type="button" class="btn btn--sm btn--ghost" id="fbCopy">Copy message</button>
+            </div>
+          </div>
         </form>
       </div>
     </section>

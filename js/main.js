@@ -183,63 +183,130 @@
     });
   });
 
-  // Contact form (Web3Forms, falls back to email if no key is configured)
+  // Contact form: Web3Forms, with a friendly direct-email fallback for any failure
+  // (monthly quota, rate limits, outages, timeouts, offline). Visitors never see technical errors.
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   const submit = document.getElementById('formSubmit');
+  const fallback = document.getElementById('formFallback');
+  const fbGmail = document.getElementById('fbGmail');
+  const fbMail = document.getElementById('fbMail');
+  const fbCopy = document.getElementById('fbCopy');
+  const TO = 'letsconnect@genbuildx.com';
+  const TIMEOUT_MS = 15000;
+  let sending = false;
+
   const setStatus = (msg, kind) => {
     status.textContent = msg;
     status.className = `form__status${kind ? ` is-${kind}` : ''}`;
   };
+  const compose = (d) => {
+    const subject = `Website enquiry: ${d.interest} | ${d.name}${d.organisation ? ` (${d.organisation})` : ''}`;
+    const details = [`Name: ${d.name}`, d.organisation && `Organisation: ${d.organisation}`, `Email: ${d.email}`, d.phone && `Phone: ${d.phone}`, `Area of interest: ${d.interest}`].filter(Boolean).join('\n');
+    return { subject, body: `${details}\n\n${d.message}` };
+  };
+  const showFallback = ({ subject, body }) => {
+    const s = encodeURIComponent(subject);
+    const b = encodeURIComponent(body);
+    fbGmail.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${TO}&su=${s}&body=${b}`;
+    fbMail.href = `mailto:${TO}?subject=${s}&body=${b}`;
+    fbCopy.onclick = async () => {
+      const text = `To: ${TO}\nSubject: ${subject}\n\n${body}`;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) { /* ignore */ }
+        ta.remove();
+      }
+      fbCopy.textContent = 'Copied!';
+      setTimeout(() => { fbCopy.textContent = 'Copy message'; }, 2000);
+    };
+    fallback.hidden = false;
+  };
+  const fail = (msg, mail) => {
+    setStatus(msg, 'err');
+    showFallback(mail);
+  };
+
+  form.querySelectorAll('input, textarea').forEach((field) => {
+    field.addEventListener('input', () => field.classList.remove('is-invalid'));
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (sending) return;
     let valid = true;
     form.querySelectorAll('[required]').forEach((field) => {
-      const ok = field.value.trim() !== '' && (field.type !== 'email' || /^\S+@\S+\.\S+$/.test(field.value));
+      const ok = field.value.trim() !== '' && (field.type !== 'email' || /^\S+@\S+\.\S+$/.test(field.value.trim()));
       field.classList.toggle('is-invalid', !ok);
       if (!ok) valid = false;
     });
     if (!valid) {
-      setStatus('Please fill in your name, a valid email and project details.', 'err');
+      setStatus('Please fill in your name, a valid email address and your project details.', 'err');
+      form.querySelector('.is-invalid').focus();
       return;
     }
-    const d = Object.fromEntries(new FormData(form));
+    const d = Object.fromEntries([...new FormData(form)].map(([k, v]) => [k, String(v).trim()]));
     if (d.botcheck) return;
-    const subject = `Website enquiry: ${d.interest} | ${d.name}${d.organisation ? ` (${d.organisation})` : ''}`;
+    const mail = compose(d);
     const key = form.dataset.key;
+    fallback.hidden = true;
 
     if (!key || key.startsWith('__')) {
-      const body = [`Name: ${d.name}`, d.organisation && `Organisation: ${d.organisation}`, `Email: ${d.email}`, d.phone && `Phone: ${d.phone}`, `Area of interest: ${d.interest}`].filter(Boolean).join('\n');
-      window.location.href = `mailto:letsconnect@genbuildx.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${body}\n\n${d.message}`)}`;
+      setStatus('Please send your enquiry using one of the options below.', '');
+      showFallback(mail);
+      return;
+    }
+    if (navigator.onLine === false) {
+      fail('You seem to be offline. Please check your internet connection and try again, or use one of the options below.', mail);
       return;
     }
 
+    sending = true;
     submit.disabled = true;
     submit.textContent = 'Sending…';
     setStatus('');
+    const controller = 'AbortController' in window ? new AbortController() : null;
+    const timer = controller && setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: key,
-          subject,
+          subject: mail.subject,
           from_name: 'GenBuildX Website',
           name: d.name,
           email: d.email,
-          organisation: d.organisation,
-          phone: d.phone,
+          organisation: d.organisation || '-',
+          phone: d.phone || '-',
           interest: d.interest,
           message: d.message,
+          botcheck: false,
         }),
+        signal: controller ? controller.signal : undefined,
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.success) throw new Error(json.message || 'Request failed');
+      if (!res.ok || json.success !== true) throw new Error('send-failed');
       form.reset();
       setStatus('Thank you! Your enquiry has been sent. Our team will get back to you soon.', 'ok');
     } catch (err) {
-      setStatus('Sorry, something went wrong. Please email us at letsconnect@genbuildx.com.', 'err');
+      // Any failure (quota reached, rate limit, server or network error) gets the same calm message;
+      // the visitor's text is kept in the form and offered through direct email instead.
+      const timedOut = err && err.name === 'AbortError';
+      fail(timedOut
+        ? 'This is taking longer than expected. Please send your enquiry directly using one of the options below.'
+        : "We couldn't send your message just now. Please send it directly using one of the options below, and we'll respond just as quickly.", mail);
     } finally {
+      if (timer) clearTimeout(timer);
+      sending = false;
       submit.disabled = false;
       submit.textContent = 'Send Enquiry';
     }
