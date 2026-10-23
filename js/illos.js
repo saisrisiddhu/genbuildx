@@ -230,6 +230,8 @@
     return `${p}Z`;
   }
 
+  window.gbxIllo = (name) => (I[name] ? `<svg viewBox="0 0 320 200" class="illo-svg" preserveAspectRatio="xMidYMid meet">${I[name]}</svg>` : '');
+
   const els = document.querySelectorAll('[data-illo]');
   els.forEach((el) => {
     const svg = I[el.dataset.illo];
