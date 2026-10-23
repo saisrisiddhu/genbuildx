@@ -628,14 +628,14 @@
         <form class="form reveal" id="contactForm" data-key="83150de8-5058-43ad-83d8-19731c0a5572" novalidate>
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__row">
-            <label>Full name<input name="name" type="text" autocomplete="name" required></label>
-            <label>Organisation<input name="organisation" type="text" autocomplete="organization"></label>
+            <label><span class="form__label">Full name <span class="req" aria-hidden="true">*</span></span><input name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="err-name"><small class="form__err" id="err-name"></small></label>
+            <label><span class="form__label">Organisation</span><input name="organisation" type="text" autocomplete="organization" maxlength="120" aria-describedby="err-organisation"><small class="form__err" id="err-organisation"></small></label>
           </div>
           <div class="form__row">
-            <label>Email<input name="email" type="email" autocomplete="email" required></label>
-            <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+            <label><span class="form__label">Email <span class="req" aria-hidden="true">*</span></span><input name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="err-email"><small class="form__err" id="err-email"></small></label>
+            <label><span class="form__label">Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+91 98765 43210" aria-describedby="err-phone"><small class="form__err" id="err-phone"></small></label>
           </div>
-          <label>Area of interest
+          <label><span class="form__label">Area of interest</span>
             <select name="interest">
               <option>Multilingual / Speech AI</option>
               <option>AI System Architecture &amp; Deployment</option>
@@ -654,7 +654,7 @@
               <option>Other</option>
             </select>
           </label>
-          <label>Project details<textarea name="message" rows="4" required></textarea></label>
+          <label><span class="form__label">Project details <span class="req" aria-hidden="true">*</span></span><textarea name="message" rows="4" maxlength="2000" required aria-describedby="err-message"></textarea><span class="form__meta"><small class="form__err" id="err-message"></small><small class="form__count" id="msgCount">0 / 2000</small></span></label>
           <button type="submit" class="btn btn--primary btn--block" id="formSubmit">Send Enquiry</button>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
           <div class="form__fallback" id="formFallback" hidden>

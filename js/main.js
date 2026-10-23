@@ -279,22 +279,72 @@
     showFallback(mail);
   };
 
-  form.querySelectorAll('input, textarea').forEach((field) => {
-    field.addEventListener('input', () => field.classList.remove('is-invalid'));
+  // Field rules: return an error message, or '' when the value is fine
+  const RULES = {
+    name: (v) => {
+      if (!v) return 'Please enter your name.';
+      if (v.length < 2) return 'Name must be at least 2 characters.';
+      if (v.length > 80) return 'Name must be 80 characters or fewer.';
+      if (!/^[\p{L}][\p{L}\p{M} .'-]*$/u.test(v)) return "Use letters, spaces and . ' - only.";
+      return '';
+    },
+    organisation: (v) => (v.length > 120 ? 'Organisation must be 120 characters or fewer.' : ''),
+    email: (v) => {
+      if (!v) return 'Please enter your email address.';
+      if (v.length > 254) return 'Email must be 254 characters or fewer.';
+      if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/.test(v) || v.includes('..')) return 'Enter a valid email, e.g. name@company.com.';
+      return '';
+    },
+    phone: (v) => {
+      if (!v) return '';
+      if (!/^\+?[0-9\s()-]+$/.test(v)) return 'Use digits, spaces, + - ( ) only.';
+      const digits = v.replace(/\D/g, '').length;
+      if (digits < 10 || digits > 15) return 'Phone number must have 10 to 15 digits.';
+      return '';
+    },
+    message: (v) => {
+      if (!v) return 'Please tell us about your project.';
+      if (v.length < 20) return `Please add a little more detail (at least 20 characters, ${20 - v.length} to go).`;
+      if (v.length > 2000) return 'Project details must be 2000 characters or fewer.';
+      return '';
+    },
+  };
+  const fieldEls = Object.keys(RULES).map((n) => form.elements[n]);
+  const checkField = (field) => {
+    const msg = RULES[field.name](field.value.trim());
+    field.classList.toggle('is-invalid', !!msg);
+    field.setAttribute('aria-invalid', String(!!msg));
+    const err = document.getElementById(`err-${field.name}`);
+    if (err) err.textContent = msg;
+    return !msg;
+  };
+  const validateAll = () => {
+    updateCount();
+    let first = null;
+    fieldEls.forEach((f) => { if (!checkField(f) && !first) first = f; });
+    return first;
+  };
+  const msgCount = document.getElementById('msgCount');
+  const updateCount = () => {
+    const n = form.elements.message.value.trim().length;
+    msgCount.textContent = `${n} / 2000`;
+    msgCount.classList.toggle('is-low', n > 0 && n < 20);
+  };
+  fieldEls.forEach((field) => {
+    // check when leaving a field; once flagged, re-check live as the visitor fixes it
+    field.addEventListener('blur', () => { if (field.value.trim()) checkField(field); });
+    field.addEventListener('input', () => { if (field.classList.contains('is-invalid')) checkField(field); });
   });
+  form.elements.message.addEventListener('input', updateCount);
+  form.addEventListener('reset', () => setTimeout(() => { updateCount(); fieldEls.forEach((f) => { f.classList.remove('is-invalid'); document.getElementById(`err-${f.name}`).textContent = ''; }); }));
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (sending) return;
-    let valid = true;
-    form.querySelectorAll('[required]').forEach((field) => {
-      const ok = field.value.trim() !== '' && (field.type !== 'email' || /^\S+@\S+\.\S+$/.test(field.value.trim()));
-      field.classList.toggle('is-invalid', !ok);
-      if (!ok) valid = false;
-    });
-    if (!valid) {
-      setStatus('Please fill in your name, a valid email address and your project details.', 'err');
-      form.querySelector('.is-invalid').focus();
+    const firstBad = validateAll();
+    if (firstBad) {
+      setStatus('Please correct the highlighted fields.', 'err');
+      firstBad.focus();
       return;
     }
     const d = Object.fromEntries([...new FormData(form)].map(([k, v]) => [k, String(v).trim()]));
