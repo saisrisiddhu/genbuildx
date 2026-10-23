@@ -103,6 +103,12 @@
     splitViews.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // Pause CSS animations in sections far from the viewport
+  if ('IntersectionObserver' in window) {
+    const off = new IntersectionObserver((entries) => entries.forEach((e) => e.target.classList.toggle('is-offscreen', !e.isIntersecting)), { rootMargin: '200px 0px' });
+    document.querySelectorAll('main > section, main > .marquee, .footer').forEach((el) => off.observe(el));
+  }
+
   // Reveal on scroll
   const items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {

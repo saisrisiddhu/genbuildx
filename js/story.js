@@ -142,17 +142,33 @@
   }
 
   let ticking = false;
+  let near = false;
+  let lastP = -1;
+  let top = 0;
+  let total = 1;
+  const measure = () => {
+    top = story.getBoundingClientRect().top + window.scrollY;
+    total = Math.max(1, story.offsetHeight - window.innerHeight);
+  };
   const update = () => {
     ticking = false;
-    const r = story.getBoundingClientRect();
-    const total = story.offsetHeight - window.innerHeight;
-    const p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+    const p = Math.min(1, Math.max(0, (window.scrollY - top) / total));
+    // skip tiny changes so the scene isn't re-styled for sub-pixel scrolls
+    if (Math.abs(p - lastP) < 0.002) return;
+    lastP = p;
     render(p);
   };
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', update);
+  window.addEventListener('scroll', () => {
+    if (near && !ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener('resize', () => { measure(); update(); });
+  measure();
   update();
 
-  // Ambient motion only while the story is on screen
-  new IntersectionObserver(([e]) => story.classList.toggle('in-view', e.isIntersecting)).observe(story);
+  // Only track scroll (and run ambient motion) while the story is near the viewport
+  new IntersectionObserver(([e]) => {
+    near = e.isIntersecting;
+    story.classList.toggle('in-view', near);
+    if (near) { measure(); update(); }
+  }, { rootMargin: '200px 0px' }).observe(story);
 })();

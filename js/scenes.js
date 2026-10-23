@@ -2,6 +2,20 @@ import * as THREE from 'three';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const small = window.matchMedia('(max-width: 900px)').matches;
+// Lower-power devices get a lighter render
+const lowPower = small || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+const MAX_DPR = lowPower ? 1 : 1.5;
+const FRAME_MS = 1000 / (lowPower ? 30 : 45);
+
+// While the page is actively scrolling, 3D scenes drop to a few frames per second
+// so the browser can spend its time on smooth scrolling.
+let scrolling = false;
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  scrolling = true;
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => { scrolling = false; }, 140);
+}, { passive: true });
 const C = { lime: 0xc6f36b, green: 0x7dc12e, mid: 0x22a024, deep: 0x0e8a10, bg: 0x07130d };
 
 // Seeded random so the city looks the same on every visit
@@ -13,12 +27,12 @@ function mount(canvas, setup) {
   if (!canvas) return;
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: !lowPower, alpha: true, powerPreference: lowPower ? 'low-power' : 'high-performance' });
   } catch (e) {
     canvas.style.display = 'none';
     return;
   }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, MAX_DPR));
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200);
   const ctx = setup({ scene, camera, canvas });
@@ -39,12 +53,14 @@ function mount(canvas, setup) {
     if (!raf) render();
   };
   const loop = (now) => {
-    const dt = Math.min(0.05, (now - last) / 1000);
+    raf = requestAnimationFrame(loop);
+    const gap = now - last;
+    if (gap < (scrolling ? 250 : FRAME_MS)) return;
+    const dt = Math.min(0.05, gap / 1000);
     last = now;
     t += dt;
     ctx.update(t, dt);
     render();
-    raf = requestAnimationFrame(loop);
   };
   const play = () => {
     if (raf || reduceMotion) return;
@@ -59,7 +75,7 @@ function mount(canvas, setup) {
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     if (visible && !document.hidden) play(); else stop();
-  }).observe(canvas);
+  }, { rootMargin: '100px' }).observe(canvas);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stop(); else if (visible) play();
   });
