@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>GenBuildX | AI Solutions for Construction & Infrastructure</title>
   <meta name="description" content="GenBuildX Pvt Ltd delivers AI, digital construction technology, GPU compute and sustainable solutions for high-rise developers, infrastructure companies and state and central government projects in India.">
   <meta name="theme-color" content="#07130d">
@@ -23,6 +23,10 @@
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js')</script>
 
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js" } }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,6 +42,7 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
   <header class="nav" id="top">
     <div class="wrap nav__inner">
@@ -46,12 +51,12 @@
         <span>GenBuildX</span>
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#technology">Technology</a>
         <a href="#ai-compute">AI &amp; Compute</a>
+        <a href="#technology">Construction Tech</a>
         <a href="#sovereign">Data Security</a>
         <a href="#industries">Who We Serve</a>
         <a href="#solutions">Solutions</a>
-        <a href="#contact" class="btn btn--sm btn--primary">Let's Connect</a>
+        <a href="#contact" class="btn btn--sm btn--primary magnetic">Let's Connect</a>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
@@ -62,105 +67,270 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero">
-      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="wrap hero__grid">
         <div class="hero__copy">
           <p class="eyebrow"><span class="dot"></span> AI · Digital Construction · Sovereign Compute</p>
-          <h1>Building a smarter, <span class="grad">greener tomorrow</span> with AI.</h1>
-          <p class="lead">GenBuildX brings artificial intelligence, digital twins, computer vision and scalable GPU compute to India's construction and infrastructure sector. We combine construction expertise, advanced technology and sustainable solutions to deliver resilient, efficient and future-ready built environments.</p>
-          <div class="hero__cta">
-            <a href="#contact" class="btn btn--primary">Request a Consultation</a>
-            <a href="#technology" class="btn btn--ghost">Explore Our Technology</a>
+          <h1 class="split">Building a smarter, <span class="grad">greener tomorrow</span> with AI.</h1>
+          <p class="lead rise" style="--d:.5s">GenBuildX brings artificial intelligence, digital twins, computer vision and scalable GPU compute to India's construction and infrastructure sector. We combine construction expertise, advanced technology and sustainable solutions to deliver resilient, efficient and future-ready built environments.</p>
+          <div class="hero__cta rise" style="--d:.7s">
+            <a href="#contact" class="btn btn--primary magnetic">Request a Consultation</a>
+            <a href="#ai-compute" class="btn btn--ghost">Explore Our AI</a>
           </div>
-          <ul class="hero__tags" aria-label="Focus areas">
+          <ul class="hero__tags rise" style="--d:.9s" aria-label="Focus areas">
             <li>Construction</li><li>Technology</li><li>Environment</li><li>People</li><li>A Better Tomorrow</li>
           </ul>
         </div>
-
-        <div class="hero__visual" aria-hidden="true">
-          <div class="console">
-            <div class="console__bar">
-              <span></span><span></span><span></span>
-              <p>GenBuildX · Site Intelligence</p>
-            </div>
-            <div class="console__body">
-              <div class="twin">
-                <svg viewBox="0 0 320 220" class="twin__svg">
-                  <defs>
-                    <linearGradient id="tw" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0" stop-color="#7dc12e" stop-opacity=".55"/>
-                      <stop offset="1" stop-color="#0e8a10" stop-opacity=".05"/>
-                    </linearGradient>
-                  </defs>
-                  <g class="twin__grid" stroke="#7dc12e" stroke-opacity=".12">
-                    <path d="M0 200 H320 M0 170 H320 M0 140 H320 M0 110 H320 M0 80 H320 M0 50 H320"/>
-                    <path d="M40 0 V220 M80 0 V220 M120 0 V220 M160 0 V220 M200 0 V220 M240 0 V220 M280 0 V220"/>
-                  </g>
-                  <g fill="url(#tw)" stroke="#7dc12e" stroke-width="1.2">
-                    <rect x="34" y="96" width="46" height="104"/>
-                    <rect x="96" y="40" width="58" height="160"/>
-                    <rect x="170" y="70" width="50" height="130"/>
-                    <rect x="236" y="120" width="52" height="80"/>
-                  </g>
-                  <g stroke="#7dc12e" stroke-opacity=".45">
-                    <path d="M96 60 H154 M96 80 H154 M96 100 H154 M96 120 H154 M96 140 H154 M96 160 H154 M96 180 H154"/>
-                    <path d="M170 90 H220 M170 110 H220 M170 130 H220 M170 150 H220 M170 170 H220"/>
-                    <path d="M34 116 H80 M34 136 H80 M34 156 H80 M34 176 H80"/>
-                  </g>
-                  <rect class="scanbox" x="92" y="36" width="66" height="60" fill="none" stroke="#c6f36b" stroke-width="1.6" stroke-dasharray="6 4"/>
-                  <text x="94" y="30" class="twin__label">Floor progress · tracked</text>
-                  <line class="scanline" x1="0" x2="320" y1="0" y2="0" stroke="#c6f36b" stroke-opacity=".7"/>
-                </svg>
-              </div>
-              <div class="console__panels">
-                <div class="panel">
-                  <p class="panel__k">Computer Vision</p>
-                  <p class="panel__v">Progress &amp; quality analysis</p>
-                  <div class="meter"><span style="--w:78%"></span></div>
-                </div>
-                <div class="panel">
-                  <p class="panel__k">Structural Health</p>
-                  <p class="panel__v">Sensor monitoring</p>
-                  <svg class="spark" viewBox="0 0 120 30"><path d="M0 20 L12 18 L24 21 L36 14 L48 16 L60 10 L72 13 L84 8 L96 11 L108 6 L120 9" fill="none" stroke="#7dc12e" stroke-width="2"/></svg>
-                </div>
-                <div class="panel">
-                  <p class="panel__k">Drone Survey</p>
-                  <p class="panel__v">Planned vs. actual</p>
-                  <div class="meter"><span style="--w:64%"></span></div>
-                </div>
-                <div class="panel">
-                  <p class="panel__k">Multilingual AI</p>
-                  <p class="panel__v">Indic voice agents</p>
-                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="console__note">Illustrative interface</p>
-        </div>
       </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <canvas id="cityCanvas"></canvas>
+        <div class="hud hud--1"><span class="hud__dot"></span>Digital Twin · Live</div>
+        <div class="hud hud--2"><span class="hud__dot"></span>Drone Survey</div>
+        <div class="hud hud--3"><span class="hud__dot"></span>Structural Sensors</div>
+        <p class="hero__note">Illustrative 3D visualisation · drag to explore</p>
+      </div>
+
+      <a href="#ai-compute" class="scroll-cue" aria-label="Scroll to content"><span></span></a>
     </section>
 
-    <!-- PILLARS -->
-    <section class="pillars" aria-label="Our principles">
-      <div class="wrap pillars__grid">
-        <div class="pillar reveal">
-          <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
-          <div><h3>Innovative Solutions</h3><p>AI-first approaches to age-old construction challenges.</p></div>
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Multilingual AI</span><span>Digital Twins</span><span>Computer Vision</span><span>GPU Compute</span><span>BIM 4D/5D</span><span>Drone Intelligence</span><span>Structural Health Monitoring</span><span>MLOps</span><span>Data Centre Design</span><span>Speech AI</span><span>Digital PMC</span><span>IndiaAI Mission</span>
+        <span>Multilingual AI</span><span>Digital Twins</span><span>Computer Vision</span><span>GPU Compute</span><span>BIM 4D/5D</span><span>Drone Intelligence</span><span>Structural Health Monitoring</span><span>MLOps</span><span>Data Centre Design</span><span>Speech AI</span><span>Digital PMC</span><span>IndiaAI Mission</span>
+      </div>
+    </div>
+
+    <!-- AI, GPU COMPUTE & DATA CENTRE (highlight) -->
+    <section class="ai" id="ai-compute">
+      <div class="ai__glow" aria-hidden="true"></div>
+      <div class="circuit" aria-hidden="true"></div>
+
+      <div class="wrap ai__intro">
+        <div class="ai__copy reveal">
+          <p class="eyebrow">AI, GPU Compute &amp; Data Centre Solutions</p>
+          <h2 class="ai__title">Powering <span class="grad">indigenous AI</span> and scalable compute</h2>
+          <p class="section__lead">We design, build and deploy production-ready AI systems for India's languages, scale and public-sector needs. That spans multilingual conversational AI, speech technology, GPU infrastructure and complete data centre architecture, with one team taking you from idea to deployment.</p>
+          <ul class="ai__chips">
+            <li>Indic &amp; multilingual</li><li>Text · Voice · Image · Video</li><li>On-premise · Cloud · Hybrid</li><li>IndiaAI Mission aligned</li>
+          </ul>
         </div>
-        <div class="pillar reveal">
-          <svg viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-15-1 9-7 15-15 15Zm0 0 7-7"/></svg>
-          <div><h3>Sustainable Growth</h3><p>Greener spaces, renewable energy and responsible development.</p></div>
-        </div>
-        <div class="pillar reveal">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
-          <div><h3>Technology Driven</h3><p>Digital twins, computer vision, drones and data at every stage.</p></div>
-        </div>
-        <div class="pillar reveal">
-          <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.5 2.7-6 6-6s6 2.5 6 6M14 20c0-2.6 1.4-5 3-5s4 1.6 4 5"/></svg>
-          <div><h3>Collaborative Execution</h3><p>Working with your teams from planning to handover.</p></div>
+        <div class="ai__visual reveal" aria-hidden="true">
+          <canvas id="coreCanvas"></canvas>
+          <div class="ai__ring-label">Neural core · illustrative</div>
         </div>
       </div>
+
+      <!-- Interactive stack -->
+      <div class="wrap stack">
+        <header class="stack__head reveal">
+          <p class="eyebrow">The Full AI Stack</p>
+          <h3>Every layer, engineered end-to-end</h3>
+          <p>Select a layer to see what we deliver.</p>
+        </header>
+        <div class="stack__body">
+          <div class="stack__layers" role="tablist" aria-label="AI stack layers">
+            <button class="layer is-active" role="tab" aria-selected="true" data-layer="0"><span class="layer__n">05</span>AI Applications</button>
+            <button class="layer" role="tab" aria-selected="false" data-layer="1" tabindex="-1"><span class="layer__n">04</span>Models</button>
+            <button class="layer" role="tab" aria-selected="false" data-layer="2" tabindex="-1"><span class="layer__n">03</span>MLOps &amp; Deployment</button>
+            <button class="layer" role="tab" aria-selected="false" data-layer="3" tabindex="-1"><span class="layer__n">02</span>GPU Compute</button>
+            <button class="layer" role="tab" aria-selected="false" data-layer="4" tabindex="-1"><span class="layer__n">01</span>Data Centre</button>
+          </div>
+          <div class="stack__iso" aria-hidden="true">
+            <div class="iso">
+              <div class="iso__plate is-active" data-layer="0"><span>Applications</span></div>
+              <div class="iso__plate" data-layer="1"><span>Models</span></div>
+              <div class="iso__plate" data-layer="2"><span>MLOps</span></div>
+              <div class="iso__plate" data-layer="3"><span>GPU Compute</span></div>
+              <div class="iso__plate" data-layer="4"><span>Data Centre</span></div>
+            </div>
+          </div>
+          <div class="stack__detail" aria-live="polite">
+            <article class="detail is-active" data-layer="0">
+              <h4>AI Applications</h4>
+              <p>The AI your teams and citizens actually interact with, built around real workflows rather than demos.</p>
+              <ul>
+                <li>Multilingual conversational assistants and voice agents</li>
+                <li>Computer vision for site monitoring and quality inspection</li>
+                <li>Project analytics, reporting automation and dashboards</li>
+                <li>CRM, follow-up and business process automation</li>
+              </ul>
+            </article>
+            <article class="detail" data-layer="1" hidden>
+              <h4>Models</h4>
+              <p>Multilingual and multimodal models shaped to your domain, your data and India's languages.</p>
+              <ul>
+                <li>Text, voice, image and video models</li>
+                <li>Indic and low-resource language support</li>
+                <li>Domain-specific conversational AI</li>
+                <li>Model development, adaptation and integration</li>
+              </ul>
+            </article>
+            <article class="detail" data-layer="2" hidden>
+              <h4>MLOps &amp; Deployment</h4>
+              <p>Taking models from prototype to dependable production systems that keep performing.</p>
+              <ul>
+                <li>Production deployment and MLOps pipelines</li>
+                <li>API and data integration with existing systems</li>
+                <li>Monitoring, versioning and lifecycle management</li>
+                <li>Scalable and secure serving architecture</li>
+              </ul>
+            </article>
+            <article class="detail" data-layer="3" hidden>
+              <h4>GPU Compute</h4>
+              <p>Right-sized compute so your AI programme runs efficiently, without over- or under-investing.</p>
+              <ul>
+                <li>GPU compute requirement assessment</li>
+                <li>HPC and cloud infrastructure planning</li>
+                <li>Support for subsidised compute access</li>
+                <li>Assistance with IndiaAI Mission compute programmes</li>
+              </ul>
+            </article>
+            <article class="detail" data-layer="4" hidden>
+              <h4>Data Centre</h4>
+              <p>Infrastructure foundations designed for performance, control and long-term cost efficiency.</p>
+              <ul>
+                <li>Data centre solution architecture</li>
+                <li>On-premise, cloud and hybrid design</li>
+                <li>Compute, storage and networking</li>
+                <li>Energy-efficient, cost-optimised infrastructure design</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Expanded services -->
+      <div class="wrap">
+        <div class="cards cards--3 ai__cards">
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">AI · 01</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12Z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></div>
+            <h3>Multilingual &amp; Multimodal Conversational AI</h3>
+            <p class="card__desc">Assistants that understand and respond across Indian languages and across text, voice, image and video, so services reach every user in the language they're comfortable with.</p>
+            <ul>
+              <li>Indic language AI solutions</li>
+              <li>Text, voice, image and video models</li>
+              <li>Domain-specific conversational AI</li>
+              <li>Scalable AI for public and enterprise use</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> citizen services, customer support, field-team assistance</p>
+          </article>
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">AI · 02</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></div>
+            <h3>Speech AI &amp; Voice Technologies</h3>
+            <p class="card__desc">Speech recognition and natural text-to-speech that power voice agents and hands-free experiences, including for languages with limited digital data.</p>
+            <ul>
+              <li>Speech recognition (ASR)</li>
+              <li>Text-to-speech (TTS)</li>
+              <li>Voice agents and assistants</li>
+              <li>Multilingual and low-resource language support</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> helplines, inbound/outbound calling, voice-first apps</p>
+          </article>
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">AI · 03</span><svg class="card__icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></div>
+            <h3>AI System Architecture, Engineering &amp; Deployment</h3>
+            <p class="card__desc">End-to-end engineering of AI systems, from solution design and model integration to secure, monitored production deployment.</p>
+            <ul>
+              <li>End-to-end AI solution design</li>
+              <li>Model development and integration</li>
+              <li>Production deployment and MLOps</li>
+              <li>Scalable and secure AI systems</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> enterprises and departments moving AI into production</p>
+          </article>
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">GPU · 04</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg></div>
+            <h3>GPU Compute Infrastructure Planning &amp; Access</h3>
+            <p class="card__desc">We assess what your AI workloads really need and plan the compute to match, including access to subsidised compute where you're eligible.</p>
+            <ul>
+              <li>GPU compute requirement assessment</li>
+              <li>Support for subsidised compute access</li>
+              <li>HPC and cloud infrastructure planning</li>
+              <li>Assistance with IndiaAI Mission programmes</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> startups, research teams, public AI programmes</p>
+          </article>
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">DC · 05</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/><path d="M7 6h.01M7 18h.01M12 9v6"/></svg></div>
+            <h3>Scalable Compute &amp; Data Centre Solution Design</h3>
+            <p class="card__desc">Architecture for compute, storage and networking that scales with your AI ambitions, designed to be energy-efficient and cost-optimised.</p>
+            <ul>
+              <li>Data centre solution architecture</li>
+              <li>On-premise, cloud and hybrid design</li>
+              <li>Compute, storage and networking</li>
+              <li>Energy-efficient, cost-optimised infrastructure</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> organisations that need control over data and infrastructure</p>
+          </article>
+          <article class="card card--dark tilt reveal">
+            <div class="card__top"><span class="card__num">R&amp;D · 06</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3L15 8V2M8 2h8M7 14h10"/></svg></div>
+            <h3>AI Research &amp; IndiaAI Mission Support</h3>
+            <p class="card__desc">From applied research to programme applications, we help turn AI ideas into funded, well-scoped and technically sound initiatives.</p>
+            <ul>
+              <li>Applied AI research projects</li>
+              <li>Technical proposal preparation</li>
+              <li>Guidance on IndiaAI Mission programmes</li>
+              <li>Support for grant and compute access applications</li>
+            </ul>
+            <p class="card__fit"><b>Ideal for:</b> institutions, innovators, government-backed initiatives</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Delivery process -->
+      <div class="wrap process">
+        <header class="stack__head reveal">
+          <p class="eyebrow">How We Deliver</p>
+          <h3>From assessment to AI at scale</h3>
+        </header>
+        <ol class="process__steps">
+          <li class="reveal"><span>01</span><h4>Assess</h4><p>Understand the problem, data, users, languages and compute requirements.</p></li>
+          <li class="reveal"><span>02</span><h4>Architect</h4><p>Design the solution, model approach and on-premise, cloud or hybrid infrastructure.</p></li>
+          <li class="reveal"><span>03</span><h4>Build</h4><p>Develop, adapt and integrate models with your systems and workflows.</p></li>
+          <li class="reveal"><span>04</span><h4>Deploy</h4><p>Ship to production with MLOps, monitoring and security built in.</p></li>
+          <li class="reveal"><span>05</span><h4>Scale</h4><p>Grow users, languages and capacity with right-sized compute.</p></li>
+        </ol>
+      </div>
+
+      <!-- Impact -->
+      <div class="wrap impact">
+        <article class="impact__item reveal">
+          <h4>Construction &amp; Infrastructure</h4>
+          <ul>
+            <li>AI site monitoring and computer-vision inspection</li>
+            <li>Drone and image analytics for progress tracking</li>
+            <li>Voice agents and CRM automation for sales teams</li>
+          </ul>
+        </article>
+        <article class="impact__item reveal">
+          <h4>Government &amp; Public Sector</h4>
+          <ul>
+            <li>Citizen-facing multilingual voice and chat assistants</li>
+            <li>Secure on-premise and hybrid AI deployments</li>
+            <li>IndiaAI Mission proposals and compute access</li>
+          </ul>
+        </article>
+        <article class="impact__item reveal">
+          <h4>Enterprise &amp; Traditional Businesses</h4>
+          <ul>
+            <li>Practical AI adoption for traditional businesses</li>
+            <li>Workflow, reporting and follow-up automation</li>
+            <li>Integration with existing software and data</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="marquee marquee--lang" aria-hidden="true">
+        <div class="marquee__track marquee__track--rev">
+          <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
+          <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
+        </div>
+      </div>
+      <p class="wrap ai__cta reveal">
+        <a href="#contact" class="btn btn--primary magnetic">Start Your AI Project</a>
+      </p>
     </section>
 
     <!-- DIGITAL CONSTRUCTION & TECHNOLOGY -->
@@ -173,7 +343,7 @@
         </header>
 
         <div class="cards cards--3">
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">01</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
             <h3>BIM, Digital Twins &amp; 4D/5D Construction</h3>
             <ul>
@@ -184,7 +354,7 @@
               <li>Digital project documentation and handover</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">02</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
             <h3>AI &amp; Computer Vision for Construction</h3>
             <ul>
@@ -195,7 +365,7 @@
               <li>Image and video analysis with project analytics and reporting automation</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">03</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 12H4M15 12h5M12 9V4M12 15v5"/><circle cx="3" cy="12" r="1.5"/><circle cx="21" cy="12" r="1.5"/><circle cx="12" cy="3" r="1.5"/><circle cx="12" cy="21" r="1.5"/></svg></div>
             <h3>Drone Monitoring &amp; Construction Intelligence</h3>
             <ul>
@@ -206,7 +376,7 @@
               <li>Planned-versus-actual analysis and intelligence dashboards</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">04</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div>
             <h3>Structural Health Monitoring</h3>
             <ul>
@@ -217,7 +387,7 @@
               <li>Monitoring dashboards and alerts</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">05</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="4" height="6" rx="1"/><rect x="18" y="14" width="4" height="6" rx="1"/><path d="M20 20c0 1-2 2-5 2"/></svg></div>
             <h3>AI Voice Agents, CRM &amp; Business Automation</h3>
             <ul>
@@ -228,7 +398,7 @@
               <li>AI-powered reporting and notifications</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article class="card tilt reveal">
             <div class="card__top"><span class="card__num">06</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 2 2 5-5"/></svg></div>
             <h3>Technology Integration &amp; Implementation</h3>
             <ul>
@@ -266,132 +436,61 @@
           <p class="eyebrow">Across the Project Lifecycle</p>
           <h2>One intelligent thread from design to operations</h2>
         </header>
-        <ol class="flow">
-          <li class="flow__step reveal">
-            <span class="flow__n">Plan</span>
-            <h3>Model &amp; simulate</h3>
-            <p>BIM, digital twins, 4D scheduling and 5D cost integration before ground is broken.</p>
-          </li>
-          <li class="flow__step reveal">
-            <span class="flow__n">Build</span>
-            <h3>See &amp; measure</h3>
-            <p>Computer vision, drone surveys and Digital PMC to track progress and quality every day.</p>
-          </li>
-          <li class="flow__step reveal">
-            <span class="flow__n">Monitor</span>
-            <h3>Sense &amp; alert</h3>
-            <p>Structural health monitoring, sensor data and real-time dashboards for critical assets.</p>
-          </li>
-          <li class="flow__step reveal">
-            <span class="flow__n">Sustain</span>
-            <h3>Operate &amp; renew</h3>
-            <p>Facility and asset maintenance, renewable energy and long-term green programmes.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- AI, GPU COMPUTE & DATA CENTRE -->
-    <section class="section section--dark" id="ai-compute">
-      <div class="circuit" aria-hidden="true"></div>
-      <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">AI, GPU Compute &amp; Data Centre Solutions</p>
-          <h2>Powering indigenous AI and scalable compute</h2>
-          <p class="section__lead">We design, build and deploy production-ready AI systems, from multilingual conversational AI to GPU infrastructure and data centre architecture, built for India's languages, scale and public-sector needs.</p>
-        </header>
-
-        <div class="cards cards--3">
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">AI</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12Z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></div>
-            <h3>Multilingual &amp; Multimodal Conversational AI</h3>
-            <ul>
-              <li>Indic language AI solutions</li>
-              <li>Text, voice, image and video models</li>
-              <li>Domain-specific conversational AI</li>
-              <li>Scalable AI for public and enterprise use</li>
-            </ul>
-          </article>
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">AI</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></div>
-            <h3>Speech AI &amp; Voice Technologies</h3>
-            <ul>
-              <li>Speech recognition (ASR)</li>
-              <li>Text-to-speech (TTS)</li>
-              <li>Voice agents and assistants</li>
-              <li>Multilingual and low-resource language support</li>
-            </ul>
-          </article>
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">AI</span><svg class="card__icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></div>
-            <h3>AI System Architecture, Engineering &amp; Deployment</h3>
-            <ul>
-              <li>End-to-end AI solution design</li>
-              <li>Model development and integration</li>
-              <li>Production deployment and MLOps</li>
-              <li>Scalable and secure AI systems</li>
-            </ul>
-          </article>
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">GPU</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg></div>
-            <h3>GPU Compute Infrastructure Planning &amp; Access</h3>
-            <ul>
-              <li>GPU compute requirement assessment</li>
-              <li>Support for subsidised compute access</li>
-              <li>HPC and cloud infrastructure planning</li>
-              <li>Assistance with IndiaAI Mission programmes</li>
-            </ul>
-          </article>
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">DC</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/><path d="M7 6h.01M7 18h.01M12 9v6"/></svg></div>
-            <h3>Scalable Compute &amp; Data Centre Solution Design</h3>
-            <ul>
-              <li>Data centre solution architecture</li>
-              <li>On-premise, cloud and hybrid design</li>
-              <li>Compute, storage and networking</li>
-              <li>Energy-efficient and cost-optimised infrastructure design</li>
-            </ul>
-          </article>
-          <article class="card card--dark reveal">
-            <div class="card__top"><span class="card__num">R&amp;D</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3L15 8V2M8 2h8M7 14h10"/></svg></div>
-            <h3>AI Research &amp; IndiaAI Mission Support</h3>
-            <ul>
-              <li>Applied AI research projects</li>
-              <li>Technical proposal preparation</li>
-              <li>Guidance on IndiaAI Mission programmes</li>
-              <li>Support for grant and compute access applications</li>
-            </ul>
-          </article>
+        <div class="flow-wrap">
+          <div class="flow__line" aria-hidden="true"><span id="flowFill"></span></div>
+          <ol class="flow">
+            <li class="flow__step reveal">
+              <span class="flow__n">Plan</span>
+              <h3>Model &amp; simulate</h3>
+              <p>BIM, digital twins, 4D scheduling and 5D cost integration before ground is broken.</p>
+            </li>
+            <li class="flow__step reveal">
+              <span class="flow__n">Build</span>
+              <h3>See &amp; measure</h3>
+              <p>Computer vision, drone surveys and Digital PMC to track progress and quality every day.</p>
+            </li>
+            <li class="flow__step reveal">
+              <span class="flow__n">Monitor</span>
+              <h3>Sense &amp; alert</h3>
+              <p>Structural health monitoring, sensor data and real-time dashboards for critical assets.</p>
+            </li>
+            <li class="flow__step reveal">
+              <span class="flow__n">Sustain</span>
+              <h3>Operate &amp; renew</h3>
+              <p>Facility and asset maintenance, renewable energy and long-term green programmes.</p>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
 
     <!-- SOVEREIGN AI & DATA SECURITY -->
-    <section class="section" id="sovereign">
+    <section class="section section--dark" id="sovereign">
+      <div class="circuit" aria-hidden="true"></div>
       <div class="wrap sov">
         <div class="sov__copy reveal">
           <p class="eyebrow">Data Security &amp; India AI Vision</p>
           <h2>Your data, your infrastructure, <span class="grad">built for Bharat</span></h2>
           <p class="section__lead">Critical infrastructure and government projects demand control over where data lives and how AI is run. We architect AI and compute systems that keep sensitive project, citizen and enterprise data secure, while advancing India's vision for indigenous, inclusive AI.</p>
-          <a href="#contact" class="btn btn--primary">Discuss a Secure Deployment</a>
+          <a href="#contact" class="btn btn--primary magnetic">Discuss a Secure Deployment</a>
         </div>
         <div class="sov__grid">
-          <div class="sov__item reveal">
+          <div class="sov__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
             <h3>Secure by design</h3>
             <p>Scalable and secure AI systems engineered from architecture through production deployment.</p>
           </div>
-          <div class="sov__item reveal">
+          <div class="sov__item tilt reveal">
             <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <h3>On-premise &amp; hybrid options</h3>
             <p>Deployment models that let you choose where workloads and data reside: on-premise, cloud or hybrid.</p>
           </div>
-          <div class="sov__item reveal">
+          <div class="sov__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M4 5h7M7.5 3v2c0 4-2 7-4.5 8M5 9c1 2.5 3 4 6 4.5M13 21l4-10 4 10M14.5 17h5"/></svg>
             <h3>Indic language AI</h3>
             <p>Multilingual text, voice and speech models designed for citizens and teams across India.</p>
           </div>
-          <div class="sov__item reveal">
+          <div class="sov__item tilt reveal">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7M12 14v7M3 12h7M14 12h7M5.6 5.6l5 5M13.4 13.4l5 5M5.6 18.4l5-5M13.4 10.6l5-5"/></svg>
             <h3>IndiaAI Mission aligned</h3>
             <p>Guidance on IndiaAI Mission programmes, compute access and proposals for public and enterprise AI.</p>
@@ -408,22 +507,22 @@
           <h2>Built for those who build India</h2>
         </header>
         <div class="aud">
-          <article class="aud__item reveal">
+          <article class="aud__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M3 21h18M6 21V5l6-3v19M12 8h6v13M9 7h.01M9 11h.01M9 15h.01M15 12h.01M15 16h.01"/></svg>
             <h3>High-Rise Builders &amp; Developers</h3>
             <p>Digital twins, AI progress tracking, Digital PMC and AI-driven sales automation for residential and commercial towers.</p>
           </article>
-          <article class="aud__item reveal">
+          <article class="aud__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M2 18h20M4 18v-4a8 8 0 0 1 16 0v4M8 18v-3M12 18v-5M16 18v-3"/></svg>
             <h3>Large-Scale Construction &amp; Infrastructure</h3>
             <p>Drone intelligence, structural health monitoring and integrated dashboards for roads, bridges and large sites.</p>
           </article>
-          <article class="aud__item reveal">
+          <article class="aud__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3 3 8v2h18V8l-9-5ZM6 10v8M10 10v8M14 10v8M18 10v8"/></svg>
             <h3>State &amp; Central Government Projects</h3>
             <p>Transparent, data-driven project monitoring and citizen-facing multilingual AI for public programmes.</p>
           </article>
-          <article class="aud__item reveal">
+          <article class="aud__item tilt reveal">
             <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg>
             <h3>Data-Sensitive &amp; Sovereign AI Initiatives</h3>
             <p>Secure AI architecture, GPU compute planning and IndiaAI Mission support for organisations that need control of their data.</p>
@@ -477,6 +576,7 @@
 
     <!-- CONTACT -->
     <section class="section section--dark contact" id="contact">
+      <div class="circuit" aria-hidden="true"></div>
       <div class="wrap contact__grid">
         <div class="contact__copy reveal">
           <p class="eyebrow">Let's Connect</p>
@@ -487,10 +587,11 @@
             letsconnect@genbuildx.com
           </a>
         </div>
-        <form class="form reveal" id="contactForm" novalidate>
+        <form class="form reveal" id="contactForm" data-key="__WEB3FORMS_KEY__" novalidate>
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__row">
             <label>Full name<input name="name" type="text" autocomplete="name" required></label>
-            <label>Organisation<input name="org" type="text" autocomplete="organization"></label>
+            <label>Organisation<input name="organisation" type="text" autocomplete="organization"></label>
           </div>
           <div class="form__row">
             <label>Email<input name="email" type="email" autocomplete="email" required></label>
@@ -498,23 +599,24 @@
           </div>
           <label>Area of interest
             <select name="interest">
+              <option>Multilingual / Speech AI</option>
+              <option>AI System Architecture &amp; Deployment</option>
+              <option>GPU Compute &amp; Data Centre</option>
+              <option>IndiaAI Mission Support</option>
               <option>AI &amp; Computer Vision for Construction</option>
               <option>BIM, Digital Twins &amp; 4D/5D</option>
               <option>Digital PMC</option>
               <option>Drone Monitoring</option>
               <option>Structural Health Monitoring</option>
               <option>AI Voice Agents &amp; CRM Automation</option>
-              <option>Multilingual / Speech AI</option>
-              <option>GPU Compute &amp; Data Centre</option>
-              <option>IndiaAI Mission Support</option>
               <option>Construction &amp; Infrastructure</option>
               <option>Landscape, Ecology &amp; Renewable Energy</option>
               <option>Other</option>
             </select>
           </label>
           <label>Project details<textarea name="message" rows="4" required></textarea></label>
-          <button type="submit" class="btn btn--primary btn--block">Send Enquiry</button>
-          <p class="form__hint" id="formHint">Opens your email app with your message addressed to letsconnect@genbuildx.com.</p>
+          <button type="submit" class="btn btn--primary btn--block" id="formSubmit">Send Enquiry</button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -527,8 +629,8 @@
         <p>Building a smarter, greener tomorrow.</p>
       </div>
       <nav class="footer__links" aria-label="Footer">
-        <a href="#technology">Technology</a>
         <a href="#ai-compute">AI &amp; Compute</a>
+        <a href="#technology">Construction Tech</a>
         <a href="#sovereign">Data Security</a>
         <a href="#solutions">Solutions</a>
         <a href="#contact">Contact</a>
@@ -538,5 +640,6 @@
   </footer>
 
   <script src="js/main.js" defer></script>
+  <script type="module" src="js/scenes.js"></script>
 </body>
 </html>
