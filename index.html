@@ -525,20 +525,26 @@
     <section class="sec theme-lime" id="solutions">
       <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="solhero">
-          <div class="solhero__copy">
-            <p class="eyebrow reveal"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
-            <h2 class="sec__title split-on-view">From groundwork to <span class="grad">green spaces</span></h2>
-            <p class="sec__lead reveal">Technology is most powerful when it's grounded in delivery. Alongside our digital capabilities, we deliver construction, environmental and project services that create resilient, greener and more liveable spaces.</p>
-            <ul class="chips reveal"><li>Construction &amp; infrastructure</li><li>Landscape &amp; ecology</li><li>Renewable energy</li><li>Project services</li></ul>
-          </div>
-          <div class="solhero__visual" aria-hidden="true">
-            <canvas id="greenCanvas"></canvas>
-            <div class="hud hud--s1"><span class="hud__dot"></span>Afforestation</div>
-            <div class="hud hud--s2"><span class="hud__dot"></span>Solar Energy</div>
-            <div class="hud hud--s3"><span class="hud__dot"></span>Roadworks</div>
-            <div class="hud hud--s4"><span class="hud__dot"></span>Bio-Pools</div>
-            <p class="solhero__note">Illustrative 3D visualisation · drag to explore</p>
+        <div class="story" id="story">
+          <div class="story__pin">
+            <div class="story__copy">
+              <p class="eyebrow"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
+              <h2 class="sec__title">From groundwork to <span class="grad">green spaces</span></h2>
+              <ol class="story__steps" id="storySteps">
+                <li data-from="0" data-to="0.15"><span class="story__n">01</span><div><h3>Survey &amp; plan</h3><p>Every project starts with a precise site plan and the right groundwork.</p></div></li>
+                <li data-from="0.15" data-to="0.3"><span class="story__n">02</span><div><h3>Earthworks &amp; roads</h3><p>Excavation, backfilling, site preparation, roadworks and civil execution.</p></div></li>
+                <li data-from="0.3" data-to="0.48"><span class="story__n">03</span><div><h3>Build</h3><p>Residential and high-rise construction, expansion joints and interior fit-outs.</p></div></li>
+                <li data-from="0.48" data-to="0.66"><span class="story__n">04</span><div><h3>Landscape</h3><p>Gardens, lawns, pathways, hardscape and softscape for every kind of campus.</p></div></li>
+                <li data-from="0.66" data-to="0.82"><span class="story__n">05</span><div><h3>Afforestation &amp; urban forestry</h3><p>Native forests, green belts and tree-lined avenues that grow with the city.</p></div></li>
+                <li data-from="0.82" data-to="0.92"><span class="story__n">06</span><div><h3>Water &amp; energy</h3><p>Natural bio-pools and solar power for cleaner, self-sustaining spaces.</p></div></li>
+                <li data-from="0.92" data-to="1.01"><span class="story__n">07</span><div><h3>Deliver &amp; maintain</h3><p>Procurement, commercial support and long-term facility and asset care.</p></div></li>
+              </ol>
+              <div class="story__meter" aria-hidden="true"><span>Site progress</span><b id="storyPct">0%</b><i><em id="storyBar"></em></i></div>
+            </div>
+            <div class="story__stage" aria-hidden="true">
+              <div class="story__svg" id="storySvg"></div>
+              <p class="story__hint" id="storyHint">Scroll to build ↓</p>
+            </div>
           </div>
         </div>
 
@@ -670,6 +676,7 @@
 
   <script src="js/illos.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/story.js" defer></script>
   <script src="js/solutions.js" defer></script>
   <script type="module" src="js/scenes.js"></script>
 </body>
