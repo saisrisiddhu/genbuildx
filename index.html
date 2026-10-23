@@ -46,9 +46,9 @@
 
   <header class="nav" id="top">
     <div class="wrap nav__inner">
-      <a href="#top" class="nav__brand" aria-label="GenBuildX home">
-        <img src="assets/logo-mark.png" alt="" width="40" height="28">
-        <span>GenBuildX</span>
+      <a href="#top" class="brand" id="brand" aria-label="GenBuildX home">
+        <span class="brand__mark"><img src="assets/logo-mark.png" alt="" width="58" height="41"><span class="brand__shine"></span></span>
+        <span class="brand__text">GenBuild<b>X</b></span>
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Primary">
         <a href="#ai-compute">AI &amp; Compute</a>
@@ -70,16 +70,13 @@
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow"><span class="dot"></span> AI · Digital Construction · Sovereign Compute</p>
-          <h1 class="split">Building a smarter, <span class="grad">greener tomorrow</span> with AI.</h1>
-          <p class="lead rise" style="--d:.5s">GenBuildX brings artificial intelligence, digital twins, computer vision and scalable GPU compute to India's construction and infrastructure sector. We combine construction expertise, advanced technology and sustainable solutions to deliver resilient, efficient and future-ready built environments.</p>
-          <div class="hero__cta rise" style="--d:.7s">
+          <p class="eyebrow"><span class="dot"></span> Building a smarter, greener tomorrow</p>
+          <h1 class="split">AI &amp; technology for India's <span class="grad">construction, infrastructure</span> and public projects.</h1>
+          <p class="lead rise" style="--d:.6s">GenBuildX helps high-rise developers, infrastructure companies and state and central government projects build smarter, using digital twins, computer vision, drones, multilingual AI and secure GPU compute, backed by sustainable, on-ground delivery.</p>
+          <div class="hero__cta rise" style="--d:.8s">
             <a href="#contact" class="btn btn--primary magnetic">Request a Consultation</a>
-            <a href="#ai-compute" class="btn btn--ghost">Explore Our AI</a>
+            <a href="#what-we-do" class="btn btn--ghost">See What We Do</a>
           </div>
-          <ul class="hero__tags rise" style="--d:.9s" aria-label="Focus areas">
-            <li>Construction</li><li>Technology</li><li>Environment</li><li>People</li><li>A Better Tomorrow</li>
-          </ul>
         </div>
       </div>
 
@@ -90,8 +87,40 @@
         <div class="hud hud--3"><span class="hud__dot"></span>Structural Sensors</div>
         <p class="hero__note">Illustrative 3D visualisation · drag to explore</p>
       </div>
+    </section>
 
-      <a href="#ai-compute" class="scroll-cue" aria-label="Scroll to content"><span></span></a>
+    <!-- AT A GLANCE -->
+    <section class="glance" id="what-we-do" aria-label="What we do">
+      <div class="wrap glance__grid">
+        <a href="#ai-compute" class="glance__item rise" style="--d:1s">
+          <span class="glance__illo" data-illo="network"></span>
+          <span class="glance__n">01</span>
+          <h2>AI &amp; GPU Compute</h2>
+          <p>Multilingual AI, speech, MLOps, GPU planning and data centre design.</p>
+          <span class="glance__go">Explore →</span>
+        </a>
+        <a href="#technology" class="glance__item rise" style="--d:1.1s">
+          <span class="glance__illo" data-illo="bim"></span>
+          <span class="glance__n">02</span>
+          <h2>Construction Technology</h2>
+          <p>BIM, digital twins, computer vision, drones, sensors and Digital PMC.</p>
+          <span class="glance__go">Explore →</span>
+        </a>
+        <a href="#sovereign" class="glance__item rise" style="--d:1.2s">
+          <span class="glance__illo" data-illo="shield"></span>
+          <span class="glance__n">03</span>
+          <h2>Secure, Sovereign AI</h2>
+          <p>On-premise and hybrid AI, aligned with India's AI vision.</p>
+          <span class="glance__go">Explore →</span>
+        </a>
+        <a href="#solutions" class="glance__item rise" style="--d:1.3s">
+          <span class="glance__illo" data-illo="afforest"></span>
+          <span class="glance__n">04</span>
+          <h2>Sustainable Delivery</h2>
+          <p>Construction, landscape, afforestation, solar and project services.</p>
+          <span class="glance__go">Explore →</span>
+        </a>
+      </div>
     </section>
 
     <!-- MARQUEE -->
@@ -102,486 +131,472 @@
       </div>
     </div>
 
-    <!-- AI, GPU COMPUTE & DATA CENTRE (highlight) -->
-    <section class="ai" id="ai-compute">
-      <div class="ai__glow" aria-hidden="true"></div>
-      <div class="circuit" aria-hidden="true"></div>
-
-      <div class="wrap ai__intro">
-        <div class="ai__copy reveal">
-          <p class="eyebrow">AI, GPU Compute &amp; Data Centre Solutions</p>
-          <h2 class="ai__title">Powering <span class="grad">indigenous AI</span> and scalable compute</h2>
-          <p class="section__lead">We design, build and deploy production-ready AI systems for India's languages, scale and public-sector needs. That spans multilingual conversational AI, speech technology, GPU infrastructure and complete data centre architecture, with one team taking you from idea to deployment.</p>
-          <ul class="ai__chips">
-            <li>Indic &amp; multilingual</li><li>Text · Voice · Image · Video</li><li>On-premise · Cloud · Hybrid</li><li>IndiaAI Mission aligned</li>
-          </ul>
-        </div>
-        <div class="ai__visual reveal" aria-hidden="true">
-          <canvas id="coreCanvas"></canvas>
-          <div class="ai__ring-label">Neural core · illustrative</div>
-        </div>
-      </div>
-
-      <!-- Interactive stack -->
-      <div class="wrap stack">
-        <header class="stack__head reveal">
-          <p class="eyebrow">The Full AI Stack</p>
-          <h3>Every layer, engineered end-to-end</h3>
-          <p>Select a layer to see what we deliver.</p>
-        </header>
-        <div class="stack__body">
-          <div class="stack__layers" role="tablist" aria-label="AI stack layers">
-            <button class="layer is-active" role="tab" aria-selected="true" data-layer="0"><span class="layer__n">05</span>AI Applications</button>
-            <button class="layer" role="tab" aria-selected="false" data-layer="1" tabindex="-1"><span class="layer__n">04</span>Models</button>
-            <button class="layer" role="tab" aria-selected="false" data-layer="2" tabindex="-1"><span class="layer__n">03</span>MLOps &amp; Deployment</button>
-            <button class="layer" role="tab" aria-selected="false" data-layer="3" tabindex="-1"><span class="layer__n">02</span>GPU Compute</button>
-            <button class="layer" role="tab" aria-selected="false" data-layer="4" tabindex="-1"><span class="layer__n">01</span>Data Centre</button>
+    <!-- 01 AI, GPU COMPUTE & DATA CENTRE -->
+    <section class="sec theme-dark" id="ai-compute">
+      <div class="sec__bg" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="sec__intro">
+          <div class="sec__copy reveal">
+            <p class="eyebrow"><span class="eyebrow__n">01</span> AI, GPU Compute &amp; Data Centre</p>
+            <h2 class="sec__title">Powering <span class="grad">indigenous AI</span> and scalable compute</h2>
+            <p class="sec__lead">We design, build and deploy production-ready AI systems for India's languages, scale and public-sector needs. That spans multilingual conversational AI, speech technology, GPU infrastructure and complete data centre architecture, with one team taking you from idea to deployment.</p>
+            <ul class="chips"><li>Indic &amp; multilingual</li><li>Text · Voice · Image · Video</li><li>On-premise · Cloud · Hybrid</li><li>IndiaAI Mission aligned</li></ul>
           </div>
-          <div class="stack__iso" aria-hidden="true">
-            <div class="iso">
-              <div class="iso__plate is-active" data-layer="0"><span>Applications</span></div>
-              <div class="iso__plate" data-layer="1"><span>Models</span></div>
-              <div class="iso__plate" data-layer="2"><span>MLOps</span></div>
-              <div class="iso__plate" data-layer="3"><span>GPU Compute</span></div>
-              <div class="iso__plate" data-layer="4"><span>Data Centre</span></div>
+          <div class="sec__visual sec__visual--canvas reveal" aria-hidden="true">
+            <canvas id="coreCanvas"></canvas>
+            <span class="sec__visual-note">Neural core · illustrative</span>
+          </div>
+        </div>
+
+        <div class="explorer reveal" data-explorer>
+          <header class="sub__head">
+            <p class="eyebrow">The Full AI Stack</p>
+            <h3>Every layer, engineered end-to-end</h3>
+            <p>Select a layer to see what we deliver.</p>
+          </header>
+          <div class="explorer__body">
+            <div class="explorer__tabs" role="tablist" aria-label="AI stack layers">
+              <button class="xtab is-active" role="tab" aria-selected="true"><span>05</span>AI Applications</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>04</span>Models</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>03</span>MLOps &amp; Deployment</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>02</span>GPU Compute</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>01</span>Data Centre</button>
+            </div>
+            <div class="explorer__art explorer__art--iso" aria-hidden="true">
+              <div class="iso">
+                <div class="iso__plate xart is-active"><span>Applications</span></div>
+                <div class="iso__plate xart"><span>Models</span></div>
+                <div class="iso__plate xart"><span>MLOps</span></div>
+                <div class="iso__plate xart"><span>GPU Compute</span></div>
+                <div class="iso__plate xart"><span>Data Centre</span></div>
+              </div>
+            </div>
+            <div class="explorer__detail" aria-live="polite">
+              <article class="xdetail is-active"><h4>AI Applications</h4><p>The AI your teams and citizens actually interact with, built around real workflows rather than demos.</p><ul><li>Multilingual conversational assistants and voice agents</li><li>Computer vision for site monitoring and quality inspection</li><li>Project analytics, reporting automation and dashboards</li><li>CRM, follow-up and business process automation</li></ul></article>
+              <article class="xdetail" hidden><h4>Models</h4><p>Multilingual and multimodal models shaped to your domain, your data and India's languages.</p><ul><li>Text, voice, image and video models</li><li>Indic and low-resource language support</li><li>Domain-specific conversational AI</li><li>Model development, adaptation and integration</li></ul></article>
+              <article class="xdetail" hidden><h4>MLOps &amp; Deployment</h4><p>Taking models from prototype to dependable production systems that keep performing.</p><ul><li>Production deployment and MLOps pipelines</li><li>API and data integration with existing systems</li><li>Monitoring, versioning and lifecycle management</li><li>Scalable and secure serving architecture</li></ul></article>
+              <article class="xdetail" hidden><h4>GPU Compute</h4><p>Right-sized compute so your AI programme runs efficiently, without over- or under-investing.</p><ul><li>GPU compute requirement assessment</li><li>HPC and cloud infrastructure planning</li><li>Support for subsidised compute access</li><li>Assistance with IndiaAI Mission compute programmes</li></ul></article>
+              <article class="xdetail" hidden><h4>Data Centre</h4><p>Infrastructure foundations designed for performance, control and long-term cost efficiency.</p><ul><li>Data centre solution architecture</li><li>On-premise, cloud and hybrid design</li><li>Compute, storage and networking</li><li>Energy-efficient, cost-optimised infrastructure design</li></ul></article>
             </div>
           </div>
-          <div class="stack__detail" aria-live="polite">
-            <article class="detail is-active" data-layer="0">
-              <h4>AI Applications</h4>
-              <p>The AI your teams and citizens actually interact with, built around real workflows rather than demos.</p>
-              <ul>
-                <li>Multilingual conversational assistants and voice agents</li>
-                <li>Computer vision for site monitoring and quality inspection</li>
-                <li>Project analytics, reporting automation and dashboards</li>
-                <li>CRM, follow-up and business process automation</li>
-              </ul>
-            </article>
-            <article class="detail" data-layer="1" hidden>
-              <h4>Models</h4>
-              <p>Multilingual and multimodal models shaped to your domain, your data and India's languages.</p>
-              <ul>
-                <li>Text, voice, image and video models</li>
-                <li>Indic and low-resource language support</li>
-                <li>Domain-specific conversational AI</li>
-                <li>Model development, adaptation and integration</li>
-              </ul>
-            </article>
-            <article class="detail" data-layer="2" hidden>
-              <h4>MLOps &amp; Deployment</h4>
-              <p>Taking models from prototype to dependable production systems that keep performing.</p>
-              <ul>
-                <li>Production deployment and MLOps pipelines</li>
-                <li>API and data integration with existing systems</li>
-                <li>Monitoring, versioning and lifecycle management</li>
-                <li>Scalable and secure serving architecture</li>
-              </ul>
-            </article>
-            <article class="detail" data-layer="3" hidden>
-              <h4>GPU Compute</h4>
-              <p>Right-sized compute so your AI programme runs efficiently, without over- or under-investing.</p>
-              <ul>
-                <li>GPU compute requirement assessment</li>
-                <li>HPC and cloud infrastructure planning</li>
-                <li>Support for subsidised compute access</li>
-                <li>Assistance with IndiaAI Mission compute programmes</li>
-              </ul>
-            </article>
-            <article class="detail" data-layer="4" hidden>
-              <h4>Data Centre</h4>
-              <p>Infrastructure foundations designed for performance, control and long-term cost efficiency.</p>
-              <ul>
-                <li>Data centre solution architecture</li>
-                <li>On-premise, cloud and hybrid design</li>
-                <li>Compute, storage and networking</li>
-                <li>Energy-efficient, cost-optimised infrastructure design</li>
-              </ul>
-            </article>
-          </div>
         </div>
-      </div>
 
-      <!-- Expanded services -->
-      <div class="wrap">
-        <div class="cards cards--3 ai__cards">
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">AI · 01</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12Z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></div>
-            <h3>Multilingual &amp; Multimodal Conversational AI</h3>
-            <p class="card__desc">Assistants that understand and respond across Indian languages and across text, voice, image and video, so services reach every user in the language they're comfortable with.</p>
-            <ul>
-              <li>Indic language AI solutions</li>
-              <li>Text, voice, image and video models</li>
-              <li>Domain-specific conversational AI</li>
-              <li>Scalable AI for public and enterprise use</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> citizen services, customer support, field-team assistance</p>
-          </article>
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">AI · 02</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/></svg></div>
-            <h3>Speech AI &amp; Voice Technologies</h3>
-            <p class="card__desc">Speech recognition and natural text-to-speech that power voice agents and hands-free experiences, including for languages with limited digital data.</p>
-            <ul>
-              <li>Speech recognition (ASR)</li>
-              <li>Text-to-speech (TTS)</li>
-              <li>Voice agents and assistants</li>
-              <li>Multilingual and low-resource language support</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> helplines, inbound/outbound calling, voice-first apps</p>
-          </article>
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">AI · 03</span><svg class="card__icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg></div>
-            <h3>AI System Architecture, Engineering &amp; Deployment</h3>
-            <p class="card__desc">End-to-end engineering of AI systems, from solution design and model integration to secure, monitored production deployment.</p>
-            <ul>
-              <li>End-to-end AI solution design</li>
-              <li>Model development and integration</li>
-              <li>Production deployment and MLOps</li>
-              <li>Scalable and secure AI systems</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> enterprises and departments moving AI into production</p>
-          </article>
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">GPU · 04</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg></div>
-            <h3>GPU Compute Infrastructure Planning &amp; Access</h3>
-            <p class="card__desc">We assess what your AI workloads really need and plan the compute to match, including access to subsidised compute where you're eligible.</p>
-            <ul>
-              <li>GPU compute requirement assessment</li>
-              <li>Support for subsidised compute access</li>
-              <li>HPC and cloud infrastructure planning</li>
-              <li>Assistance with IndiaAI Mission programmes</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> startups, research teams, public AI programmes</p>
-          </article>
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">DC · 05</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/><path d="M7 6h.01M7 18h.01M12 9v6"/></svg></div>
-            <h3>Scalable Compute &amp; Data Centre Solution Design</h3>
-            <p class="card__desc">Architecture for compute, storage and networking that scales with your AI ambitions, designed to be energy-efficient and cost-optimised.</p>
-            <ul>
-              <li>Data centre solution architecture</li>
-              <li>On-premise, cloud and hybrid design</li>
-              <li>Compute, storage and networking</li>
-              <li>Energy-efficient, cost-optimised infrastructure</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> organisations that need control over data and infrastructure</p>
-          </article>
-          <article class="card card--dark tilt reveal">
-            <div class="card__top"><span class="card__num">R&amp;D · 06</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3L15 8V2M8 2h8M7 14h10"/></svg></div>
-            <h3>AI Research &amp; IndiaAI Mission Support</h3>
-            <p class="card__desc">From applied research to programme applications, we help turn AI ideas into funded, well-scoped and technically sound initiatives.</p>
-            <ul>
-              <li>Applied AI research projects</li>
-              <li>Technical proposal preparation</li>
-              <li>Guidance on IndiaAI Mission programmes</li>
-              <li>Support for grant and compute access applications</li>
-            </ul>
-            <p class="card__fit"><b>Ideal for:</b> institutions, innovators, government-backed initiatives</p>
-          </article>
-        </div>
-      </div>
-
-      <!-- Delivery process -->
-      <div class="wrap process">
-        <header class="stack__head reveal">
-          <p class="eyebrow">How We Deliver</p>
-          <h3>From assessment to AI at scale</h3>
-        </header>
-        <ol class="process__steps">
-          <li class="reveal"><span>01</span><h4>Assess</h4><p>Understand the problem, data, users, languages and compute requirements.</p></li>
-          <li class="reveal"><span>02</span><h4>Architect</h4><p>Design the solution, model approach and on-premise, cloud or hybrid infrastructure.</p></li>
-          <li class="reveal"><span>03</span><h4>Build</h4><p>Develop, adapt and integrate models with your systems and workflows.</p></li>
-          <li class="reveal"><span>04</span><h4>Deploy</h4><p>Ship to production with MLOps, monitoring and security built in.</p></li>
-          <li class="reveal"><span>05</span><h4>Scale</h4><p>Grow users, languages and capacity with right-sized compute.</p></li>
-        </ol>
-      </div>
-
-      <!-- Impact -->
-      <div class="wrap impact">
-        <article class="impact__item reveal">
-          <h4>Construction &amp; Infrastructure</h4>
-          <ul>
-            <li>AI site monitoring and computer-vision inspection</li>
-            <li>Drone and image analytics for progress tracking</li>
-            <li>Voice agents and CRM automation for sales teams</li>
-          </ul>
-        </article>
-        <article class="impact__item reveal">
-          <h4>Government &amp; Public Sector</h4>
-          <ul>
-            <li>Citizen-facing multilingual voice and chat assistants</li>
-            <li>Secure on-premise and hybrid AI deployments</li>
-            <li>IndiaAI Mission proposals and compute access</li>
-          </ul>
-        </article>
-        <article class="impact__item reveal">
-          <h4>Enterprise &amp; Traditional Businesses</h4>
-          <ul>
-            <li>Practical AI adoption for traditional businesses</li>
-            <li>Workflow, reporting and follow-up automation</li>
-            <li>Integration with existing software and data</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="marquee marquee--lang" aria-hidden="true">
-        <div class="marquee__track marquee__track--rev">
-          <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
-          <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
-        </div>
-      </div>
-      <p class="wrap ai__cta reveal">
-        <a href="#contact" class="btn btn--primary magnetic">Start Your AI Project</a>
-      </p>
-    </section>
-
-    <!-- DIGITAL CONSTRUCTION & TECHNOLOGY -->
-    <section class="section" id="technology">
-      <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">Digital Construction &amp; Technology</p>
-          <h2>Technology for smarter construction</h2>
-          <p class="section__lead">From the first BIM model to the final digital handover, we put real-time data and AI to work on every project, giving builders and project owners full visibility, control and confidence.</p>
-        </header>
-
+        <header class="sub__head reveal"><p class="eyebrow">Our AI &amp; Compute Services</p><h3>Six ways we bring AI to life</h3></header>
         <div class="cards cards--3">
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">01</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
-            <h3>BIM, Digital Twins &amp; 4D/5D Construction</h3>
-            <ul>
-              <li>Building Information Modelling (BIM)</li>
-              <li>3D digital building models and digital twins</li>
-              <li>4D construction scheduling and simulation</li>
-              <li>5D quantity and cost integration</li>
-              <li>Digital project documentation and handover</li>
-            </ul>
+            <div class="card__illo" data-illo="chat"></div>
+            <div class="card__body">
+              <span class="card__num">AI · 01</span>
+              <h3>Multilingual &amp; Multimodal Conversational AI</h3>
+              <p class="card__desc">Assistants that understand and respond across Indian languages and across text, voice, image and video, so services reach every user in the language they're comfortable with.</p>
+              <ul><li>Indic language AI solutions</li><li>Text, voice, image and video models</li><li>Domain-specific conversational AI</li><li>Scalable AI for public and enterprise use</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> citizen services, customer support, field-team assistance</p>
+            </div>
           </article>
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">02</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <h3>AI &amp; Computer Vision for Construction</h3>
-            <ul>
-              <li>AI-powered site monitoring</li>
-              <li>Visual progress tracking</li>
-              <li>Computer-vision-based inspections</li>
-              <li>Construction quality analysis</li>
-              <li>Image and video analysis with project analytics and reporting automation</li>
-            </ul>
+            <div class="card__illo" data-illo="voice"></div>
+            <div class="card__body">
+              <span class="card__num">AI · 02</span>
+              <h3>Speech AI &amp; Voice Technologies</h3>
+              <p class="card__desc">Speech recognition and natural text-to-speech that power voice agents and hands-free experiences, including for languages with limited digital data.</p>
+              <ul><li>Speech recognition (ASR)</li><li>Text-to-speech (TTS)</li><li>Voice agents and assistants</li><li>Multilingual and low-resource language support</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> helplines, inbound/outbound calling, voice-first apps</p>
+            </div>
           </article>
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">03</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 12H4M15 12h5M12 9V4M12 15v5"/><circle cx="3" cy="12" r="1.5"/><circle cx="21" cy="12" r="1.5"/><circle cx="12" cy="3" r="1.5"/><circle cx="12" cy="21" r="1.5"/></svg></div>
-            <h3>Drone Monitoring &amp; Construction Intelligence</h3>
-            <ul>
-              <li>Drone-based aerial site monitoring and surveys</li>
-              <li>Construction progress documentation</li>
-              <li>Site mapping and geospatial analysis</li>
-              <li>Remote project monitoring</li>
-              <li>Planned-versus-actual analysis and intelligence dashboards</li>
-            </ul>
+            <div class="card__illo" data-illo="layers"></div>
+            <div class="card__body">
+              <span class="card__num">AI · 03</span>
+              <h3>AI System Architecture, Engineering &amp; Deployment</h3>
+              <p class="card__desc">End-to-end engineering of AI systems, from solution design and model integration to secure, monitored production deployment.</p>
+              <ul><li>End-to-end AI solution design</li><li>Model development and integration</li><li>Production deployment and MLOps</li><li>Scalable and secure AI systems</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> enterprises and departments moving AI into production</p>
+            </div>
           </article>
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">04</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg></div>
-            <h3>Structural Health Monitoring</h3>
-            <ul>
-              <li>Structural monitoring systems and sensor integration</li>
-              <li>Real-time data acquisition</li>
-              <li>Structural movement and vibration monitoring</li>
-              <li>Infrastructure performance monitoring</li>
-              <li>Monitoring dashboards and alerts</li>
-            </ul>
+            <div class="card__illo" data-illo="gpu"></div>
+            <div class="card__body">
+              <span class="card__num">GPU · 04</span>
+              <h3>GPU Compute Infrastructure Planning &amp; Access</h3>
+              <p class="card__desc">We assess what your AI workloads really need and plan the compute to match, including access to subsidised compute where you're eligible.</p>
+              <ul><li>GPU compute requirement assessment</li><li>Support for subsidised compute access</li><li>HPC and cloud infrastructure planning</li><li>Assistance with IndiaAI Mission programmes</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> startups, research teams, public AI programmes</p>
+            </div>
           </article>
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">05</span><svg class="card__icon" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="4" height="6" rx="1"/><rect x="18" y="14" width="4" height="6" rx="1"/><path d="M20 20c0 1-2 2-5 2"/></svg></div>
-            <h3>AI Voice Agents, CRM &amp; Business Automation</h3>
-            <ul>
-              <li>AI inbound and outbound voice agents</li>
-              <li>Automated customer follow-ups</li>
-              <li>Lead qualification and management</li>
-              <li>CRM implementation, integration and workflow automation</li>
-              <li>AI-powered reporting and notifications</li>
-            </ul>
+            <div class="card__illo" data-illo="datacentre"></div>
+            <div class="card__body">
+              <span class="card__num">DC · 05</span>
+              <h3>Scalable Compute &amp; Data Centre Solution Design</h3>
+              <p class="card__desc">Architecture for compute, storage and networking that scales with your AI ambitions, designed to be energy-efficient and cost-optimised.</p>
+              <ul><li>Data centre solution architecture</li><li>On-premise, cloud and hybrid design</li><li>Compute, storage and networking</li><li>Energy-efficient, cost-optimised infrastructure</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> organisations that need control over data and infrastructure</p>
+            </div>
           </article>
           <article class="card tilt reveal">
-            <div class="card__top"><span class="card__num">06</span><svg class="card__icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 12l3-3 2 2 5-5"/></svg></div>
-            <h3>Technology Integration &amp; Implementation</h3>
-            <ul>
-              <li>Construction software integration</li>
-              <li>API and data integration</li>
-              <li>Monitoring dashboards</li>
-              <li>AI system implementation</li>
-              <li>Technology onboarding for project teams and digital workflow implementation</li>
-            </ul>
+            <div class="card__illo" data-illo="research"></div>
+            <div class="card__body">
+              <span class="card__num">R&amp;D · 06</span>
+              <h3>AI Research &amp; IndiaAI Mission Support</h3>
+              <p class="card__desc">From applied research to programme applications, we help turn AI ideas into funded, well-scoped and technically sound initiatives.</p>
+              <ul><li>Applied AI research projects</li><li>Technical proposal preparation</li><li>Guidance on IndiaAI Mission programmes</li><li>Support for grant and compute access applications</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> institutions, innovators, government-backed initiatives</p>
+            </div>
           </article>
         </div>
 
-        <div class="pmc reveal">
-          <div class="pmc__copy">
+        <div class="process">
+          <header class="sub__head reveal"><p class="eyebrow">How We Deliver</p><h3>From assessment to AI at scale</h3></header>
+          <ol class="process__steps">
+            <li class="reveal"><span>01</span><h4>Assess</h4><p>Understand the problem, data, users, languages and compute requirements.</p></li>
+            <li class="reveal"><span>02</span><h4>Architect</h4><p>Design the solution, model approach and on-premise, cloud or hybrid infrastructure.</p></li>
+            <li class="reveal"><span>03</span><h4>Build</h4><p>Develop, adapt and integrate models with your systems and workflows.</p></li>
+            <li class="reveal"><span>04</span><h4>Deploy</h4><p>Ship to production with MLOps, monitoring and security built in.</p></li>
+            <li class="reveal"><span>05</span><h4>Scale</h4><p>Grow users, languages and capacity with right-sized compute.</p></li>
+          </ol>
+        </div>
+
+        <div class="marquee marquee--lang" aria-hidden="true">
+          <div class="marquee__track marquee__track--rev">
+            <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
+            <span>हिन्दी</span><span>తెలుగు</span><span>தமிழ்</span><span>ಕನ್ನಡ</span><span>മലയാളം</span><span>मराठी</span><span>বাংলা</span><span>ગુજરાતી</span><span>ਪੰਜਾਬੀ</span><span>ଓଡ଼ିଆ</span><span>English</span>
+          </div>
+        </div>
+        <p class="sec__cta reveal"><a href="#contact" class="btn btn--primary magnetic">Start Your AI Project</a></p>
+      </div>
+    </section>
+
+    <!-- 02 CONSTRUCTION TECHNOLOGY -->
+    <section class="sec theme-light" id="technology">
+      <div class="sec__bg" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="sec__intro">
+          <div class="sec__copy reveal">
+            <p class="eyebrow"><span class="eyebrow__n">02</span> Digital Construction &amp; Technology</p>
+            <h2 class="sec__title">Technology for <span class="grad">smarter construction</span></h2>
+            <p class="sec__lead">From the first BIM model to the final digital handover, we put real-time data and AI to work on every project, giving builders and project owners full visibility, control and confidence across schedule, cost and quality.</p>
+            <ul class="chips"><li>BIM &amp; Digital Twins</li><li>Computer Vision</li><li>Drones</li><li>Sensors &amp; Monitoring</li><li>Digital PMC</li></ul>
+          </div>
+          <div class="sec__visual sec__visual--canvas reveal" aria-hidden="true">
+            <canvas id="bimCanvas"></canvas>
+            <span class="sec__visual-note">Digital twin · illustrative</span>
+          </div>
+        </div>
+
+        <div class="explorer reveal" data-explorer>
+          <header class="sub__head">
+            <p class="eyebrow">Across the Project Lifecycle</p>
+            <h3>One intelligent thread from design to operations</h3>
+            <p>Select a stage to see how technology supports it.</p>
+          </header>
+          <div class="explorer__body">
+            <div class="explorer__tabs" role="tablist" aria-label="Project lifecycle stages">
+              <button class="xtab is-active" role="tab" aria-selected="true"><span>01</span>Plan</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>02</span>Build</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>03</span>Monitor</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>04</span>Sustain</button>
+            </div>
+            <div class="explorer__art" aria-hidden="true">
+              <div class="xart is-active" data-illo="bim"></div>
+              <div class="xart" data-illo="drone"></div>
+              <div class="xart" data-illo="shm"></div>
+              <div class="xart" data-illo="maintenance"></div>
+            </div>
+            <div class="explorer__detail" aria-live="polite">
+              <article class="xdetail is-active"><h4>Plan · Model &amp; simulate</h4><p>Get the project right digitally before ground is broken.</p><ul><li>BIM and 3D digital building models</li><li>4D construction scheduling and simulation</li><li>5D quantity and cost integration</li><li>Digital twin set-up for the asset</li></ul></article>
+              <article class="xdetail" hidden><h4>Build · See &amp; measure</h4><p>Track progress and quality on site every day, not just at review meetings.</p><ul><li>AI computer-vision progress tracking</li><li>Drone surveys and site mapping</li><li>Digital PMC for schedule, cost and quality</li><li>Contractor and subcontractor coordination</li></ul></article>
+              <article class="xdetail" hidden><h4>Monitor · Sense &amp; alert</h4><p>Keep critical structures safe with continuous, real-time insight.</p><ul><li>Structural health monitoring sensors</li><li>Real-time data acquisition</li><li>Monitoring dashboards and alerts</li><li>Infrastructure performance tracking</li></ul></article>
+              <article class="xdetail" hidden><h4>Sustain · Operate &amp; renew</h4><p>Hand over a living digital asset and keep it performing for years.</p><ul><li>Digital documentation and handover</li><li>Facility and asset maintenance</li><li>Renewable energy integration</li><li>Long-term green programmes</li></ul></article>
+            </div>
+          </div>
+        </div>
+
+        <header class="sub__head reveal"><p class="eyebrow">Our Construction Technology Services</p><h3>Digital tools that build better</h3></header>
+        <div class="cards cards--3">
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="bim"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 01</span>
+              <h3>BIM, Digital Twins &amp; 4D/5D Construction</h3>
+              <p class="card__desc">Plan and visualise projects in 3D before work begins, and coordinate design, schedule and cost in one digital model that becomes a twin of the finished asset.</p>
+              <ul><li>Building Information Modelling (BIM)</li><li>3D digital building models and digital twins</li><li>4D construction scheduling and simulation</li><li>5D quantity and cost integration</li><li>Digital project documentation and handover</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> developers, design and planning teams</p>
+            </div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="vision"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 02</span>
+              <h3>AI &amp; Computer Vision for Construction</h3>
+              <p class="card__desc">Cameras and AI that watch progress and quality around the clock, flagging deviations early and turning site imagery into clear reports.</p>
+              <ul><li>AI-powered site monitoring</li><li>Visual progress tracking</li><li>Computer-vision-based inspections</li><li>Construction quality analysis</li><li>Image and video analytics with automated reporting</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> large sites, multi-tower projects, quality teams</p>
+            </div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="drone"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 03</span>
+              <h3>Drone Monitoring &amp; Construction Intelligence</h3>
+              <p class="card__desc">Aerial surveys that map the entire site quickly and compare planned versus actual progress from above.</p>
+              <ul><li>Drone-based aerial site monitoring and surveys</li><li>Construction progress documentation</li><li>Site mapping and geospatial analysis</li><li>Remote project monitoring</li><li>Planned-versus-actual analysis and dashboards</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> infrastructure corridors, townships, large land parcels</p>
+            </div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="shm"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 04</span>
+              <h3>Structural Health Monitoring</h3>
+              <p class="card__desc">Sensors and real-time data that track the movement, vibration and performance of critical structures, with alerts before issues escalate.</p>
+              <ul><li>Structural monitoring systems and sensor integration</li><li>Real-time data acquisition</li><li>Structural movement and vibration monitoring</li><li>Infrastructure performance monitoring</li><li>Monitoring dashboards and alerts</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> bridges, flyovers, high-rises, public infrastructure</p>
+            </div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="crm"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 05</span>
+              <h3>AI Voice Agents, CRM &amp; Business Automation</h3>
+              <p class="card__desc">AI voice agents and CRM automation that answer, follow up and qualify every lead, so your sales teams can focus on closing.</p>
+              <ul><li>AI inbound and outbound voice agents</li><li>Automated customer follow-ups</li><li>Lead qualification and management</li><li>CRM implementation, integration and workflow automation</li><li>AI-powered reporting and notifications</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> real-estate sales and customer teams</p>
+            </div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="integration"></div>
+            <div class="card__body">
+              <span class="card__num">CT · 06</span>
+              <h3>Technology Integration &amp; Implementation</h3>
+              <p class="card__desc">We connect the software your teams already use, from site tools to dashboards, and bring your people onto new digital workflows.</p>
+              <ul><li>Construction software integration</li><li>API and data integration</li><li>Monitoring dashboards</li><li>AI system implementation</li><li>Team onboarding and digital workflow implementation</li></ul>
+              <p class="card__fit"><b>Ideal for:</b> organisations modernising traditional processes</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="feature reveal">
+          <div class="feature__illo" data-illo="gantt"></div>
+          <div class="feature__copy">
             <p class="eyebrow">Digital PMC</p>
             <h3>Digital Project Management Consultancy</h3>
             <p>AI-enabled project monitoring that brings schedules, budgets, contractors and documentation into one connected view, from mobilisation to end-to-end handover.</p>
+            <ul class="feature__list">
+              <li>AI-enabled project monitoring</li><li>Planning and schedule tracking</li><li>Cost control and budget monitoring</li><li>Progress and quality reporting</li><li>Contractor and subcontractor coordination</li><li>Digital documentation and reporting</li>
+            </ul>
           </div>
-          <ul class="pmc__list">
-            <li>AI-enabled project monitoring</li>
-            <li>Project planning and schedule tracking</li>
-            <li>Cost control and budget monitoring</li>
-            <li>Progress and quality reporting</li>
-            <li>Contractor and subcontractor coordination</li>
-            <li>Digital documentation and reporting</li>
-          </ul>
         </div>
+        <p class="sec__cta reveal"><a href="#contact" class="btn btn--primary magnetic">Digitise Your Project</a></p>
       </div>
     </section>
 
-    <!-- LIFECYCLE -->
-    <section class="section section--alt" id="lifecycle">
+    <!-- 03 DATA SECURITY & SOVEREIGN AI -->
+    <section class="sec theme-green" id="sovereign">
+      <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">Across the Project Lifecycle</p>
-          <h2>One intelligent thread from design to operations</h2>
-        </header>
-        <div class="flow-wrap">
-          <div class="flow__line" aria-hidden="true"><span id="flowFill"></span></div>
-          <ol class="flow">
-            <li class="flow__step reveal">
-              <span class="flow__n">Plan</span>
-              <h3>Model &amp; simulate</h3>
-              <p>BIM, digital twins, 4D scheduling and 5D cost integration before ground is broken.</p>
-            </li>
-            <li class="flow__step reveal">
-              <span class="flow__n">Build</span>
-              <h3>See &amp; measure</h3>
-              <p>Computer vision, drone surveys and Digital PMC to track progress and quality every day.</p>
-            </li>
-            <li class="flow__step reveal">
-              <span class="flow__n">Monitor</span>
-              <h3>Sense &amp; alert</h3>
-              <p>Structural health monitoring, sensor data and real-time dashboards for critical assets.</p>
-            </li>
-            <li class="flow__step reveal">
-              <span class="flow__n">Sustain</span>
-              <h3>Operate &amp; renew</h3>
-              <p>Facility and asset maintenance, renewable energy and long-term green programmes.</p>
-            </li>
-          </ol>
+        <div class="sec__intro">
+          <div class="sec__copy reveal">
+            <p class="eyebrow"><span class="eyebrow__n">03</span> Data Security &amp; India AI Vision</p>
+            <h2 class="sec__title">Your data, your infrastructure, <span class="grad">built for Bharat</span></h2>
+            <p class="sec__lead">Critical infrastructure and government projects demand control over where data lives and how AI is run. We architect AI and compute systems that keep sensitive project, citizen and enterprise data secure, while advancing India's vision for indigenous, inclusive AI.</p>
+            <ul class="chips"><li>Secure by design</li><li>Data control</li><li>On-premise · Hybrid · Cloud</li><li>Indic language AI</li></ul>
+          </div>
+          <div class="sec__visual reveal" aria-hidden="true">
+            <div class="sec__visual-illo" data-illo="shield"></div>
+          </div>
         </div>
+
+        <div class="explorer reveal" data-explorer>
+          <header class="sub__head">
+            <p class="eyebrow">Deployment Models</p>
+            <h3>Choose where your AI runs</h3>
+            <p>Select a model to compare.</p>
+          </header>
+          <div class="explorer__body">
+            <div class="explorer__tabs" role="tablist" aria-label="Deployment models">
+              <button class="xtab is-active" role="tab" aria-selected="true"><span>A</span>On-premise</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>B</span>Hybrid</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>C</span>Cloud</button>
+            </div>
+            <div class="explorer__art" aria-hidden="true">
+              <div class="xart is-active" data-illo="onprem"></div>
+              <div class="xart" data-illo="hybrid"></div>
+              <div class="xart" data-illo="cloud"></div>
+            </div>
+            <div class="explorer__detail" aria-live="polite">
+              <article class="xdetail is-active"><h4>On-premise · Maximum control</h4><p>AI and compute run inside your own facilities, so sensitive data stays on your premises.</p><ul><li>Data stays within your infrastructure</li><li>Suited to sensitive government and citizen data</li><li>Compute, storage and networking designed for you</li><li>Energy-efficient, cost-optimised design</li></ul></article>
+              <article class="xdetail" hidden><h4>Hybrid · Control with flexibility</h4><p>Keep sensitive workloads on-premise while using cloud capacity where it makes sense.</p><ul><li>Sensitive data on-premise, extra capacity in the cloud</li><li>Balanced cost and control</li><li>One integrated architecture across environments</li><li>Scales as programmes grow</li></ul></article>
+              <article class="xdetail" hidden><h4>Cloud · Speed and scale</h4><p>Launch quickly on cloud infrastructure, with planning that keeps cost and security in check.</p><ul><li>Fast to start and scale</li><li>HPC and cloud infrastructure planning</li><li>Support for subsidised compute access</li><li>Secure, monitored deployment</li></ul></article>
+            </div>
+          </div>
+        </div>
+
+        <header class="sub__head reveal"><p class="eyebrow">Our Security Principles</p><h3>Trust built into every system</h3></header>
+        <div class="cards cards--4">
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="shield"></div>
+            <div class="card__body"><span class="card__num">DS · 01</span><h3>Secure by design</h3><p class="card__desc">Scalable and secure AI systems engineered from architecture through production deployment.</p></div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="lock"></div>
+            <div class="card__body"><span class="card__num">DS · 02</span><h3>Data control &amp; residency</h3><p class="card__desc">Architectures that let you decide where data is stored and processed: on-premise, cloud or hybrid.</p></div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="language"></div>
+            <div class="card__body"><span class="card__num">DS · 03</span><h3>Indic language AI</h3><p class="card__desc">Multilingual text, voice and speech models designed for citizens and teams across India.</p></div>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="network"></div>
+            <div class="card__body"><span class="card__num">DS · 04</span><h3>IndiaAI Mission aligned</h3><p class="card__desc">Guidance on IndiaAI Mission programmes, compute access and proposals for public and enterprise AI.</p></div>
+          </article>
+        </div>
+        <p class="sec__cta reveal"><a href="#contact" class="btn btn--light magnetic">Discuss a Secure Deployment</a></p>
       </div>
     </section>
 
-    <!-- SOVEREIGN AI & DATA SECURITY -->
-    <section class="section section--dark" id="sovereign">
-      <div class="circuit" aria-hidden="true"></div>
-      <div class="wrap sov">
-        <div class="sov__copy reveal">
-          <p class="eyebrow">Data Security &amp; India AI Vision</p>
-          <h2>Your data, your infrastructure, <span class="grad">built for Bharat</span></h2>
-          <p class="section__lead">Critical infrastructure and government projects demand control over where data lives and how AI is run. We architect AI and compute systems that keep sensitive project, citizen and enterprise data secure, while advancing India's vision for indigenous, inclusive AI.</p>
-          <a href="#contact" class="btn btn--primary magnetic">Discuss a Secure Deployment</a>
-        </div>
-        <div class="sov__grid">
-          <div class="sov__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-            <h3>Secure by design</h3>
-            <p>Scalable and secure AI systems engineered from architecture through production deployment.</p>
-          </div>
-          <div class="sov__item tilt reveal">
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <h3>On-premise &amp; hybrid options</h3>
-            <p>Deployment models that let you choose where workloads and data reside: on-premise, cloud or hybrid.</p>
-          </div>
-          <div class="sov__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M4 5h7M7.5 3v2c0 4-2 7-4.5 8M5 9c1 2.5 3 4 6 4.5M13 21l4-10 4 10M14.5 17h5"/></svg>
-            <h3>Indic language AI</h3>
-            <p>Multilingual text, voice and speech models designed for citizens and teams across India.</p>
-          </div>
-          <div class="sov__item tilt reveal">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7M12 14v7M3 12h7M14 12h7M5.6 5.6l5 5M13.4 13.4l5 5M5.6 18.4l5-5M13.4 10.6l5-5"/></svg>
-            <h3>IndiaAI Mission aligned</h3>
-            <p>Guidance on IndiaAI Mission programmes, compute access and proposals for public and enterprise AI.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHO WE SERVE -->
-    <section class="section section--alt" id="industries">
+    <!-- 04 WHO WE SERVE -->
+    <section class="sec theme-mint" id="industries">
+      <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">Who We Serve</p>
-          <h2>Built for those who build India</h2>
-        </header>
-        <div class="aud">
-          <article class="aud__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M3 21h18M6 21V5l6-3v19M12 8h6v13M9 7h.01M9 11h.01M9 15h.01M15 12h.01M15 16h.01"/></svg>
-            <h3>High-Rise Builders &amp; Developers</h3>
-            <p>Digital twins, AI progress tracking, Digital PMC and AI-driven sales automation for residential and commercial towers.</p>
+        <div class="sec__intro">
+          <div class="sec__copy reveal">
+            <p class="eyebrow"><span class="eyebrow__n">04</span> Who We Serve</p>
+            <h2 class="sec__title">Built for those who <span class="grad">build India</span></h2>
+            <p class="sec__lead">From private developers raising skylines to state and central programmes building the nation's infrastructure, we bring the right mix of AI, digital tools and delivery to each.</p>
+            <ul class="chips"><li>High-rise developers</li><li>Infrastructure companies</li><li>State &amp; central projects</li><li>Data-sensitive initiatives</li></ul>
+          </div>
+          <div class="sec__visual reveal" aria-hidden="true">
+            <div class="sec__visual-illo" data-illo="skyline"></div>
+          </div>
+        </div>
+
+        <div class="explorer reveal" data-explorer>
+          <header class="sub__head">
+            <p class="eyebrow">Your Priorities, Our Solutions</p>
+            <h3>What we do for each of our clients</h3>
+            <p>Select your organisation type.</p>
+          </header>
+          <div class="explorer__body">
+            <div class="explorer__tabs" role="tablist" aria-label="Client types">
+              <button class="xtab is-active" role="tab" aria-selected="true"><span>A</span>High-Rise Builders &amp; Developers</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>B</span>Construction &amp; Infrastructure</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>C</span>State &amp; Central Government</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>D</span>Data-Sensitive &amp; Sovereign AI</button>
+            </div>
+            <div class="explorer__art" aria-hidden="true">
+              <div class="xart is-active" data-illo="highrise"></div>
+              <div class="xart" data-illo="infra"></div>
+              <div class="xart" data-illo="government"></div>
+              <div class="xart" data-illo="sovereign"></div>
+            </div>
+            <div class="explorer__detail" aria-live="polite">
+              <article class="xdetail is-active"><h4>High-Rise Builders &amp; Developers</h4><div class="duo"><div><p class="duo__k">Your priorities</p><ul><li>Faster, predictable delivery</li><li>Quality on every floor</li><li>Better sales conversion</li></ul></div><div><p class="duo__k">How we help</p><ul><li>BIM, digital twins and 4D/5D</li><li>AI progress and quality tracking</li><li>Digital PMC</li><li>AI voice agents and CRM</li></ul></div></div></article>
+              <article class="xdetail" hidden><h4>Large-Scale Construction &amp; Infrastructure</h4><div class="duo"><div><p class="duo__k">Your priorities</p><ul><li>Visibility over large, spread-out sites</li><li>Safety and performance of structures</li><li>Planned-versus-actual control</li></ul></div><div><p class="duo__k">How we help</p><ul><li>Drone surveys and geospatial analysis</li><li>Structural health monitoring</li><li>Integrated monitoring dashboards</li><li>Roadworks and civil execution</li></ul></div></div></article>
+              <article class="xdetail" hidden><h4>State &amp; Central Government Projects</h4><div class="duo"><div><p class="duo__k">Your priorities</p><ul><li>Transparency and accountability</li><li>Citizen services in local languages</li><li>Secure handling of public data</li></ul></div><div><p class="duo__k">How we help</p><ul><li>Data-driven project monitoring</li><li>Multilingual voice and chat assistants</li><li>On-premise and hybrid AI</li><li>IndiaAI Mission guidance</li></ul></div></div></article>
+              <article class="xdetail" hidden><h4>Data-Sensitive &amp; Sovereign AI Initiatives</h4><div class="duo"><div><p class="duo__k">Your priorities</p><ul><li>Control over data and models</li><li>Right-sized compute</li><li>Access to national AI programmes</li></ul></div><div><p class="duo__k">How we help</p><ul><li>Secure AI architecture</li><li>GPU compute planning</li><li>Data centre solution design</li><li>Compute access applications</li></ul></div></div></article>
+            </div>
+          </div>
+        </div>
+
+        <header class="sub__head reveal"><p class="eyebrow">The GenBuildX Approach</p><h3>What drives every engagement</h3></header>
+        <div class="cards cards--4">
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="innovate"></div>
+            <div class="card__body"><span class="card__num">01</span><h3>Innovative Solutions</h3><p class="card__desc">AI-first approaches to long-standing construction and infrastructure challenges.</p></div>
           </article>
-          <article class="aud__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M2 18h20M4 18v-4a8 8 0 0 1 16 0v4M8 18v-3M12 18v-5M16 18v-3"/></svg>
-            <h3>Large-Scale Construction &amp; Infrastructure</h3>
-            <p>Drone intelligence, structural health monitoring and integrated dashboards for roads, bridges and large sites.</p>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="sustain"></div>
+            <div class="card__body"><span class="card__num">02</span><h3>Sustainable Growth</h3><p class="card__desc">Greener spaces, renewable energy and responsible development built into every project.</p></div>
           </article>
-          <article class="aud__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3 3 8v2h18V8l-9-5ZM6 10v8M10 10v8M14 10v8M18 10v8"/></svg>
-            <h3>State &amp; Central Government Projects</h3>
-            <p>Transparent, data-driven project monitoring and citizen-facing multilingual AI for public programmes.</p>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="techgear"></div>
+            <div class="card__body"><span class="card__num">03</span><h3>Technology Driven</h3><p class="card__desc">Digital twins, computer vision, drones, sensors and AI working together at every stage.</p></div>
           </article>
-          <article class="aud__item tilt reveal">
-            <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg>
-            <h3>Data-Sensitive &amp; Sovereign AI Initiatives</h3>
-            <p>Secure AI architecture, GPU compute planning and IndiaAI Mission support for organisations that need control of their data.</p>
+          <article class="card tilt reveal">
+            <div class="card__illo" data-illo="collab"></div>
+            <div class="card__body"><span class="card__num">04</span><h3>Collaborative Execution</h3><p class="card__desc">We work alongside your teams from planning to handover.</p></div>
           </article>
         </div>
+        <p class="sec__cta reveal"><a href="#contact" class="btn btn--primary magnetic">Talk to Our Team</a></p>
       </div>
     </section>
 
-    <!-- SOLUTIONS -->
-    <section class="section" id="solutions">
+    <!-- 05 SOLUTIONS -->
+    <section class="sec theme-lime" id="solutions">
+      <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap">
-        <header class="section__head reveal">
-          <p class="eyebrow">End-to-End Solutions</p>
-          <h2>From groundwork to green spaces</h2>
-          <p class="section__lead">Technology is most powerful when it is grounded in delivery. Alongside our digital capabilities, we deliver construction, environmental and project services.</p>
-        </header>
-
-        <div class="tabs" role="tablist" aria-label="Solution areas">
-          <button class="tab is-active" role="tab" aria-selected="true" aria-controls="tab-infra" id="t-infra">Construction &amp; Infrastructure</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-green" id="t-green" tabindex="-1">Landscape, Ecology &amp; Environment</button>
-          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-services" id="t-services" tabindex="-1">Commercial &amp; Project Services</button>
-        </div>
-
-        <div class="tabpanel is-active" id="tab-infra" role="tabpanel" aria-labelledby="t-infra">
-          <div class="mini">
-            <div class="mini__item"><h3>Construction &amp; Infrastructure</h3><p>Roadworks and road infrastructure, earthworks, excavation and backfilling, demolition and site preparation, civil construction, and residential and high-rise construction.</p></div>
-            <div class="mini__item"><h3>Expansion Joint Solutions</h3><p>Building and bridge expansion joint systems, project-specific supply and installation, and technical coordination and execution.</p></div>
-            <div class="mini__item"><h3>Interior Solutions &amp; Execution</h3><p>Residential and commercial interior execution, interior finishing works, fit-outs and renovation, and interior material and contractor coordination.</p></div>
-            <div class="mini__item"><h3>Roadworks &amp; Civil Execution</h3><p>Road construction and rehabilitation, earthworks and excavation, backfilling and site development, demolition and civil infrastructure execution.</p></div>
+        <div class="sec__intro">
+          <div class="sec__copy reveal">
+            <p class="eyebrow"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
+            <h2 class="sec__title">From groundwork to <span class="grad">green spaces</span></h2>
+            <p class="sec__lead">Technology is most powerful when it's grounded in delivery. Alongside our digital capabilities, we deliver construction, environmental and project services that create resilient, greener and more liveable spaces.</p>
+            <ul class="chips"><li>Construction &amp; infrastructure</li><li>Landscape &amp; ecology</li><li>Renewable energy</li><li>Project services</li></ul>
+          </div>
+          <div class="sec__visual reveal" aria-hidden="true">
+            <div class="sec__visual-illo" data-illo="greenscape"></div>
           </div>
         </div>
 
-        <div class="tabpanel" id="tab-green" role="tabpanel" aria-labelledby="t-green" hidden>
-          <div class="mini">
-            <div class="mini__item"><h3>Landscape Design &amp; Development</h3><p>Residential, commercial, institutional and campus landscaping, hardscape and softscape development, pathways, lawns and gardens.</p></div>
-            <div class="mini__item"><h3>Bio-Pools &amp; Natural Water Features</h3><p>Natural and ecological swimming pools, plant-based water regeneration, ecological ponds and natural filtration systems.</p></div>
-            <div class="mini__item"><h3>Large-Scale Afforestation &amp; Plantation</h3><p>Reforestation, native species plantation, degraded-land restoration, and sapling establishment with survival monitoring.</p></div>
-            <div class="mini__item"><h3>Urban Forestry &amp; Plantation</h3><p>Roadside and avenue plantation, urban green belts, campus and township plantation, and urban canopy development.</p></div>
-            <div class="mini__item"><h3>Solar Installation &amp; Renewable Energy</h3><p>Rooftop, commercial and industrial solar, solar EPC coordination, renewable energy integration and feasibility studies.</p></div>
+        <div class="explorer reveal" data-explorer>
+          <header class="sub__head">
+            <p class="eyebrow">Solution Areas</p>
+            <h3>Three areas of on-ground delivery</h3>
+            <p>Select an area to see its services.</p>
+          </header>
+          <div class="explorer__body">
+            <div class="explorer__tabs" role="tablist" aria-label="Solution areas">
+              <button class="xtab is-active" role="tab" aria-selected="true"><span>A</span>Construction &amp; Infrastructure</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>B</span>Landscape, Ecology &amp; Environment</button>
+              <button class="xtab" role="tab" aria-selected="false" tabindex="-1"><span>C</span>Commercial &amp; Project Services</button>
+            </div>
+            <div class="explorer__art" aria-hidden="true">
+              <div class="xart is-active" data-illo="excavator"></div>
+              <div class="xart" data-illo="landscape"></div>
+              <div class="xart" data-illo="procurement"></div>
+            </div>
+            <div class="explorer__detail" aria-live="polite">
+              <article class="xdetail is-active"><h4>Construction, Infrastructure &amp; Engineering</h4><p>Building strong foundations for a better tomorrow.</p><ul><li>Construction and infrastructure</li><li>Expansion joint solutions</li><li>Interior solutions and execution</li><li>Roadworks and civil execution</li></ul></article>
+              <article class="xdetail" hidden><h4>Landscape, Ecology &amp; Environment</h4><p>Creating greener, healthier and more liveable spaces.</p><ul><li>Landscape design and development</li><li>Bio-pools and natural water features</li><li>Large-scale afforestation and urban forestry</li><li>Solar installation and renewable energy</li></ul></article>
+              <article class="xdetail" hidden><h4>Commercial &amp; Project Services</h4><p>Supporting efficient, successful and sustainable project delivery.</p><ul><li>Construction procurement and sourcing</li><li>Vendor and contractor coordination</li><li>Commercial documentation and billing</li><li>Facility, landscape and asset maintenance</li></ul></article>
+            </div>
           </div>
         </div>
 
-        <div class="tabpanel" id="tab-services" role="tabpanel" aria-labelledby="t-services" hidden>
-          <div class="mini">
-            <div class="mini__item"><h3>Construction Procurement &amp; Commercial Support</h3><p>Material sourcing and procurement, specialist contractor sourcing, vendor coordination, BOQ-based procurement, commercial documentation, and invoicing and billing coordination aligned with project schedules.</p></div>
-            <div class="mini__item"><h3>Facility, Landscape &amp; Asset Maintenance</h3><p>Building and campus maintenance coordination, landscape and tree-care maintenance, irrigation upkeep, facility vendor coordination and long-term maintenance programmes.</p></div>
-          </div>
+        <header class="sub__head reveal"><p class="eyebrow">Construction, Infrastructure &amp; Engineering</p><h3>Building strong foundations</h3></header>
+        <div class="cards cards--4">
+          <article class="card tilt reveal"><div class="card__illo" data-illo="excavator"></div><div class="card__body"><span class="card__num">A · 01</span><h3>Construction &amp; Infrastructure</h3><p class="card__desc">Roadworks and road infrastructure, earthworks, excavation and backfilling, demolition and site preparation, civil construction, and residential and high-rise construction.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="joint"></div><div class="card__body"><span class="card__num">A · 02</span><h3>Expansion Joint Solutions</h3><p class="card__desc">Building and bridge expansion joint systems, project-specific supply and installation, and technical coordination and execution.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="interior"></div><div class="card__body"><span class="card__num">A · 03</span><h3>Interior Solutions &amp; Execution</h3><p class="card__desc">Residential and commercial interior execution, finishing works, fit-outs and renovation, and material and contractor coordination.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="roadworks"></div><div class="card__body"><span class="card__num">A · 04</span><h3>Roadworks &amp; Civil Execution</h3><p class="card__desc">Road construction and rehabilitation, earthworks and excavation, backfilling and site development, demolition and civil infrastructure execution.</p></div></article>
         </div>
+
+        <header class="sub__head reveal"><p class="eyebrow">Landscape, Ecology &amp; Environment</p><h3>Greener, healthier, more liveable</h3></header>
+        <div class="cards cards--5">
+          <article class="card tilt reveal"><div class="card__illo" data-illo="landscape"></div><div class="card__body"><span class="card__num">B · 01</span><h3>Landscape Design &amp; Development</h3><p class="card__desc">Residential, commercial, institutional and campus landscaping, hardscape and softscape, pathways, lawns and gardens.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="biopool"></div><div class="card__body"><span class="card__num">B · 02</span><h3>Bio-Pools &amp; Natural Water Features</h3><p class="card__desc">Natural and ecological swimming pools, plant-based water regeneration, ecological ponds and natural filtration.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="afforest"></div><div class="card__body"><span class="card__num">B · 03</span><h3>Large-Scale Afforestation</h3><p class="card__desc">Reforestation, native species plantation, degraded-land restoration, and sapling establishment with survival monitoring.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="urbanforest"></div><div class="card__body"><span class="card__num">B · 04</span><h3>Urban Forestry &amp; Plantation</h3><p class="card__desc">Roadside and avenue plantation, urban green belts, campus and township plantation, and urban canopy development.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="solar"></div><div class="card__body"><span class="card__num">B · 05</span><h3>Solar &amp; Renewable Energy</h3><p class="card__desc">Rooftop, commercial and industrial solar, solar EPC coordination, renewable integration and feasibility studies.</p></div></article>
+        </div>
+
+        <header class="sub__head reveal"><p class="eyebrow">Commercial &amp; Project Services</p><h3>Smooth, sustainable project delivery</h3></header>
+        <div class="cards cards--2">
+          <article class="card tilt reveal"><div class="card__illo" data-illo="procurement"></div><div class="card__body"><span class="card__num">C · 01</span><h3>Construction Procurement &amp; Commercial Support</h3><p class="card__desc">Material sourcing and procurement, specialist contractor sourcing, vendor coordination, BOQ-based procurement, commercial documentation, and invoicing and billing coordination aligned with project schedules.</p></div></article>
+          <article class="card tilt reveal"><div class="card__illo" data-illo="maintenance"></div><div class="card__body"><span class="card__num">C · 02</span><h3>Facility, Landscape &amp; Asset Maintenance</h3><p class="card__desc">Building and campus maintenance coordination, landscape and tree-care maintenance, irrigation upkeep, facility vendor coordination and long-term maintenance programmes.</p></div></article>
+        </div>
+        <p class="sec__cta reveal"><a href="#contact" class="btn btn--primary magnetic">Plan Your Project</a></p>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section section--dark contact" id="contact">
-      <div class="circuit" aria-hidden="true"></div>
+    <!-- 06 CONTACT -->
+    <section class="sec theme-dark contact" id="contact">
+      <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap contact__grid">
         <div class="contact__copy reveal">
-          <p class="eyebrow">Let's Connect</p>
-          <h2>Let's build a smarter, greener tomorrow together.</h2>
-          <p class="section__lead">Tell us about your project, whether it's a high-rise development, an infrastructure programme, a public-sector initiative or an AI deployment. Our team will get back to you.</p>
+          <p class="eyebrow"><span class="eyebrow__n">06</span> Let's Connect</p>
+          <h2 class="sec__title">Let's build a <span class="grad">smarter, greener</span> tomorrow together.</h2>
+          <p class="sec__lead">Tell us about your project, whether it's a high-rise development, an infrastructure programme, a public-sector initiative or an AI deployment. Our team will get back to you.</p>
+          <div class="contact__illo" data-illo="mail"></div>
           <a class="contact__mail" href="mailto:letsconnect@genbuildx.com">
             <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
             letsconnect@genbuildx.com
@@ -609,8 +624,10 @@
               <option>Drone Monitoring</option>
               <option>Structural Health Monitoring</option>
               <option>AI Voice Agents &amp; CRM Automation</option>
+              <option>Secure / On-premise AI Deployment</option>
               <option>Construction &amp; Infrastructure</option>
               <option>Landscape, Ecology &amp; Renewable Energy</option>
+              <option>Procurement &amp; Project Services</option>
               <option>Other</option>
             </select>
           </label>
@@ -633,13 +650,14 @@
   <footer class="footer">
     <div class="wrap footer__inner">
       <div class="footer__brand">
-        <img src="assets/logo-horizontal.png" alt="GenBuildX" width="180" height="34">
+        <img src="assets/logo-horizontal.png" alt="GenBuildX" width="220" height="42">
         <p>Building a smarter, greener tomorrow.</p>
       </div>
       <nav class="footer__links" aria-label="Footer">
         <a href="#ai-compute">AI &amp; Compute</a>
         <a href="#technology">Construction Tech</a>
         <a href="#sovereign">Data Security</a>
+        <a href="#industries">Who We Serve</a>
         <a href="#solutions">Solutions</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -647,6 +665,7 @@
     </div>
   </footer>
 
+  <script src="js/illos.js" defer></script>
   <script src="js/main.js" defer></script>
   <script type="module" src="js/scenes.js"></script>
 </body>

@@ -419,3 +419,116 @@ mount(document.getElementById('coreCanvas'), ({ scene, camera, canvas }) => {
     },
   };
 });
+
+/* ---------------- Construction tech: BIM tower assembling floor by floor ---------------- */
+mount(document.getElementById('bimCanvas'), ({ scene, camera, canvas }) => {
+  const root = new THREE.Group();
+  scene.add(root);
+  const ink = 0x0e8a10;
+
+  const grid = new THREE.GridHelper(14, 28, C.green, C.green);
+  grid.material.transparent = true;
+  grid.material.opacity = 0.25;
+  root.add(grid);
+
+  // Site boundary
+  const plot = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(7, 0.02, 7)), new THREE.LineBasicMaterial({ color: ink, transparent: true, opacity: 0.5 }));
+  root.add(plot);
+
+  const FLOORS = 14;
+  const FH = 0.38;
+  const W = 2.6;
+  const D = 2.0;
+  const slabGeo = new THREE.BoxGeometry(W, 0.06, D);
+  const slabEdges = new THREE.EdgesGeometry(slabGeo);
+  const glassGeo = new THREE.BoxGeometry(W * 0.96, FH - 0.06, D * 0.96);
+  const glassEdges = new THREE.EdgesGeometry(glassGeo);
+  const slabMat = new THREE.MeshBasicMaterial({ color: C.green, transparent: true, opacity: 0.35, depthWrite: false });
+  const lineMat = new THREE.LineBasicMaterial({ color: ink, transparent: true, opacity: 0.9 });
+  const glassMat = new THREE.MeshBasicMaterial({ color: C.lime, transparent: true, opacity: 0.18, depthWrite: false });
+  const glassLine = new THREE.LineBasicMaterial({ color: C.mid, transparent: true, opacity: 0.45 });
+
+  const floors = [];
+  for (let i = 0; i < FLOORS; i++) {
+    const g = new THREE.Group();
+    g.add(new THREE.Mesh(slabGeo, slabMat), new THREE.LineSegments(slabEdges, lineMat));
+    const glass = new THREE.Group();
+    glass.position.y = FH / 2;
+    glass.add(new THREE.Mesh(glassGeo, glassMat), new THREE.LineSegments(glassEdges, glassLine));
+    g.add(glass);
+    g.userData = { baseY: i * FH + 0.03 };
+    g.visible = false;
+    root.add(g);
+    floors.push(g);
+  }
+
+  // Tower crane
+  const crane = new THREE.Group();
+  const mastH = FLOORS * FH + 1.6;
+  crane.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(0.18, mastH, 0.18).translate(0, mastH / 2, 0)), lineMat));
+  const jib = new THREE.Group();
+  jib.position.y = mastH;
+  jib.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(5, 0.12, 0.12).translate(1.4, 0, 0)), lineMat));
+  const hook = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.06, 0.3), new THREE.MeshBasicMaterial({ color: C.lime }));
+  const cable = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -1, 0)]), lineMat);
+  jib.add(hook, cable);
+  crane.add(jib);
+  crane.position.set(-2.4, 0, -1.6);
+  root.add(crane);
+
+  // Scanning plane (digital twin capture)
+  const scan = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 3.4).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: C.lime, transparent: true, opacity: 0.25, side: THREE.DoubleSide, depthWrite: false }));
+  const scanEdge = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(4.2, 3.4).rotateX(-Math.PI / 2)), new THREE.LineBasicMaterial({ color: C.mid }));
+  scan.add(scanEdge);
+  root.add(scan);
+
+  // Data points rising from the tower
+  const P = small ? 40 : 80;
+  const pPos = new Float32Array(P * 3);
+  const parts = Array.from({ length: P }, () => ({ x: (rand() - 0.5) * W, z: (rand() - 0.5) * D, y: rand() * 6, v: 0.4 + rand() * 0.8 }));
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  root.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: C.mid, size: 0.07, transparent: true, opacity: 0.8 })));
+
+  const drag = dragger(canvas);
+  const CYCLE = 14;
+  const target = new THREE.Vector3(0, 2.8, 0);
+  let radius = 13;
+
+  return {
+    resize(w, h) { radius = w < 420 ? 14.5 : 13; },
+    update(t, dt) {
+      const ct = t % CYCLE;
+      const build = Math.min(1, ct / 7);
+      const built = build * FLOORS;
+      // explode the stack (BIM layers) between 8s and 12s
+      const ex = ct > 8 && ct < 12 ? Math.sin(((ct - 8) / 4) * Math.PI) : 0;
+      floors.forEach((f, i) => {
+        const k = Math.min(1, Math.max(0, built - i));
+        f.visible = k > 0;
+        f.position.y = f.userData.baseY + (1 - k) * 1.2 + ex * i * 0.22;
+        f.scale.setScalar(0.6 + k * 0.4);
+      });
+      const topY = Math.max(0.3, built * FH);
+      hook.position.y = -(mastH - topY - 0.6) * (0.5 + 0.5 * Math.cos(t * 1.3));
+      cable.scale.y = -hook.position.y;
+      jib.rotation.y = Math.sin(t * 0.4) * 0.9 + 0.6;
+      scan.position.y = (Math.sin(t * 0.9) * 0.5 + 0.5) * topY;
+      scan.material.opacity = 0.12 + 0.12 * Math.abs(Math.sin(t * 0.9));
+      for (let i = 0; i < P; i++) {
+        const o = parts[i];
+        o.y += o.v * dt;
+        if (o.y > topY + 2.5) o.y = 0;
+        pPos[i * 3] = o.x * 1.1;
+        pPos[i * 3 + 1] = o.y;
+        pPos[i * 3 + 2] = o.z * 1.1;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+      if (!drag.down) { drag.velocity *= 0.94; drag.offset += drag.velocity; }
+      const az = t * 0.15 + drag.offset + pointer.x * 0.3 + 0.8;
+      const el = 0.42 + pointer.y * 0.05;
+      camera.position.set(radius * Math.cos(el) * Math.sin(az), target.y + radius * Math.sin(el), radius * Math.cos(el) * Math.cos(az));
+      camera.lookAt(target);
+    },
+  };
+});

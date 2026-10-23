@@ -29,27 +29,42 @@
     });
   });
 
-  // Nav background, scroll progress, lifecycle line
+  // Nav background and scroll progress
   const bar = document.getElementById('progressBar');
-  const flowFill = document.getElementById('flowFill');
-  const flowWrap = document.querySelector('.flow-wrap');
   let ticking = false;
   const onScroll = () => {
     const y = window.scrollY;
     nav.classList.toggle('is-scrolled', y > 20);
     const max = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-    if (flowFill && flowWrap) {
-      const r = flowWrap.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (window.innerHeight * 0.85 - r.top) / (r.height + window.innerHeight * 0.3)));
-      flowFill.style.transform = `scaleX(${p})`;
-    }
     ticking = false;
   };
   onScroll();
   window.addEventListener('scroll', () => {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
   }, { passive: true });
+
+  // Interactive logo: tilts toward the cursor, spins on click
+  const brand = document.getElementById('brand');
+  const mark = brand.querySelector('.brand__mark');
+  if (finePointer && !reduceMotion) {
+    brand.addEventListener('pointermove', (e) => {
+      const r = mark.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      mark.style.setProperty('--ry', `${x * 40}deg`);
+      mark.style.setProperty('--rx', `${-y * 40}deg`);
+    });
+    brand.addEventListener('pointerleave', () => {
+      mark.style.setProperty('--ry', '0deg');
+      mark.style.setProperty('--rx', '0deg');
+    });
+  }
+  brand.addEventListener('click', () => {
+    brand.classList.remove('is-spin');
+    void brand.offsetWidth;
+    brand.classList.add('is-spin');
+  });
 
   // Mobile menu
   const setMenu = (open) => {
@@ -138,49 +153,53 @@
     });
   };
 
-  // AI stack layers
-  const layers = [...document.querySelectorAll('.layer')];
-  const plates = [...document.querySelectorAll('.iso__plate')];
-  const details = [...document.querySelectorAll('.detail')];
-  let stackTimer;
-  const selectLayer = (btn, idx) => {
-    layers.forEach((l, i) => {
-      const on = i === idx;
-      l.classList.toggle('is-active', on);
-      l.setAttribute('aria-selected', String(on));
-      l.tabIndex = on ? 0 : -1;
-    });
-    plates.forEach((p, i) => p.classList.toggle('is-active', i === idx));
-    details.forEach((d, i) => { d.hidden = i !== idx; d.classList.toggle('is-active', i === idx); });
-  };
-  tabGroup(layers, (btn, idx) => { clearInterval(stackTimer); selectLayer(btn, idx); });
-  plates.forEach((p, i) => p.addEventListener('pointerenter', () => { clearInterval(stackTimer); selectLayer(layers[i], i); }));
-  // Auto-cycle until the visitor interacts
-  if (!reduceMotion && layers.length) {
+  // Explorers: tabs + illustration + detail, auto-cycling until the visitor interacts
+  const CYCLE_MS = 3600;
+  document.querySelectorAll('[data-explorer]').forEach((ex) => {
+    const tabs = [...ex.querySelectorAll('.xtab')];
+    const arts = [...ex.querySelectorAll('.xart')];
+    const details = [...ex.querySelectorAll('.xdetail')];
     let cur = 0;
-    const stackEl = document.querySelector('.stack__body');
-    const start = () => {
-      stackTimer = setInterval(() => { cur = (cur + 1) % layers.length; selectLayer(layers[cur], cur); }, 3200);
+    let timer = null;
+    ex.style.setProperty('--cycle', `${CYCLE_MS}ms`);
+    const select = (idx) => {
+      cur = idx;
+      tabs.forEach((t, i) => {
+        const on = i === idx;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      arts.forEach((a, i) => a.classList.toggle('is-active', i === idx));
+      details.forEach((d, i) => { d.hidden = i !== idx; d.classList.toggle('is-active', i === idx); });
+      // restart the progress bar animation on the active tab
+      const t = tabs[idx];
+      t.classList.remove('is-active');
+      void t.offsetWidth;
+      t.classList.add('is-active');
     };
-    const so = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { start(); so.disconnect(); }
-    }, { threshold: 0.4 });
-    so.observe(stackEl);
-    stackEl.addEventListener('pointerdown', () => clearInterval(stackTimer));
-  }
-
-  // Solution tabs
-  const tabs = [...document.querySelectorAll('.tab')];
-  tabGroup(tabs, (tab) => {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.classList.toggle('is-active', on);
-      t.setAttribute('aria-selected', String(on));
-      t.tabIndex = on ? 0 : -1;
-      const panel = document.getElementById(t.getAttribute('aria-controls'));
-      panel.hidden = !on;
-      panel.classList.toggle('is-active', on);
-    });
+    const stopAuto = () => {
+      clearInterval(timer);
+      timer = null;
+      ex.classList.add('is-manual');
+      ex.classList.remove('is-playing');
+    };
+    tabGroup(tabs, (btn, i) => { stopAuto(); select(i); });
+    arts.forEach((a, i) => a.addEventListener('pointerenter', () => { if (a.classList.contains('iso__plate')) { stopAuto(); select(i); } }));
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        if (ex.classList.contains('is-manual')) return;
+        if (entry.isIntersecting && !timer) {
+          ex.classList.add('is-playing');
+          select(cur);
+          timer = setInterval(() => select((cur + 1) % tabs.length), CYCLE_MS);
+        } else if (!entry.isIntersecting && timer) {
+          clearInterval(timer);
+          timer = null;
+          ex.classList.remove('is-playing');
+        }
+      }, { threshold: 0.35 }).observe(ex);
+    }
   });
 
   // Contact form: Web3Forms, with a friendly direct-email fallback for any failure
