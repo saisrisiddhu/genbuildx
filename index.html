@@ -525,64 +525,45 @@
     <section class="sec theme-lime" id="solutions">
       <div class="sec__bg" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="sec__intro">
-          <div class="sec__copy reveal">
-            <p class="eyebrow"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
-            <h2 class="sec__title">From groundwork to <span class="grad">green spaces</span></h2>
-            <p class="sec__lead">Technology is most powerful when it's grounded in delivery. Alongside our digital capabilities, we deliver construction, environmental and project services that create resilient, greener and more liveable spaces.</p>
-            <ul class="chips"><li>Construction &amp; infrastructure</li><li>Landscape &amp; ecology</li><li>Renewable energy</li><li>Project services</li></ul>
+        <div class="solhero">
+          <div class="solhero__copy">
+            <p class="eyebrow reveal"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
+            <h2 class="sec__title split-on-view">From groundwork to <span class="grad">green spaces</span></h2>
+            <p class="sec__lead reveal">Technology is most powerful when it's grounded in delivery. Alongside our digital capabilities, we deliver construction, environmental and project services that create resilient, greener and more liveable spaces.</p>
+            <ul class="chips reveal"><li>Construction &amp; infrastructure</li><li>Landscape &amp; ecology</li><li>Renewable energy</li><li>Project services</li></ul>
           </div>
-          <div class="cat-tiles reveal" role="group" aria-label="Filter solutions by area">
-            <button class="cat-tile" data-f="infra" type="button">
-              <span class="cat-tile__illo" data-illo="excavator"></span>
-              <span class="cat-tile__txt"><b>Construction, Infrastructure &amp; Engineering</b><small>4 services · Building strong foundations</small></span>
-              <span class="cat-tile__go" aria-hidden="true">→</span>
-            </button>
-            <button class="cat-tile" data-f="green" type="button">
-              <span class="cat-tile__illo" data-illo="afforest"></span>
-              <span class="cat-tile__txt"><b>Landscape, Ecology &amp; Environment</b><small>5 services · Greener, more liveable spaces</small></span>
-              <span class="cat-tile__go" aria-hidden="true">→</span>
-            </button>
-            <button class="cat-tile" data-f="services" type="button">
-              <span class="cat-tile__illo" data-illo="procurement"></span>
-              <span class="cat-tile__txt"><b>Commercial &amp; Project Services</b><small>2 services · Smooth project delivery</small></span>
-              <span class="cat-tile__go" aria-hidden="true">→</span>
-            </button>
+          <div class="solhero__visual" aria-hidden="true">
+            <canvas id="greenCanvas"></canvas>
+            <div class="hud hud--s1"><span class="hud__dot"></span>Afforestation</div>
+            <div class="hud hud--s2"><span class="hud__dot"></span>Solar Energy</div>
+            <div class="hud hud--s3"><span class="hud__dot"></span>Roadworks</div>
+            <div class="hud hud--s4"><span class="hud__dot"></span>Bio-Pools</div>
+            <p class="solhero__note">Illustrative 3D visualisation · drag to explore</p>
           </div>
         </div>
 
-        <div class="land reveal" id="land">
-          <div class="land__head">
-            <div>
-              <p class="eyebrow">Interactive Landscape</p>
-              <h3>Drag to turn the blueprint into reality</h3>
-            </div>
-            <p class="land__hint">Tap a <span class="land__dot"></span> to explore each service</p>
-          </div>
-          <div class="land__scroll" id="landScroll">
-            <div class="land__stage" id="landStage">
-              <div class="land__svg" id="landSvg" aria-hidden="true"></div>
-              <span class="land__label land__label--l">Blueprint</span>
-              <span class="land__label land__label--r">Built &amp; green</span>
-              <div class="land__handle" id="landHandle" aria-hidden="true"><span class="land__knob"><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
-              <div class="land__spots" id="landSpots"></div>
-            </div>
-          </div>
-          <div class="land__pop" id="landPop" role="dialog" aria-modal="false" aria-labelledby="landPopTitle" hidden>
-            <button class="land__close" type="button" aria-label="Close">×</button>
-            <div class="land__pop-illo" id="landPopIllo" aria-hidden="true"></div>
-            <div class="land__pop-body">
-              <span class="land__pop-cat" id="landPopCat"></span>
-              <h4 id="landPopTitle"></h4>
-              <p id="landPopDesc"></p>
-              <a href="#" class="land__pop-link" id="landPopLink">View service →</a>
-            </div>
-          </div>
-          <div class="land__bar">
-            <span>Blueprint</span>
-            <input type="range" id="landRange" min="0" max="100" value="50" aria-label="Blend between blueprint and built landscape">
-            <span>Built &amp; green</span>
-          </div>
+        <div class="cat-tiles" role="group" aria-label="Filter solutions by area">
+          <button class="cat-tile reveal" data-f="infra" type="button">
+            <span class="cat-tile__illo" data-illo="excavator"></span>
+            <span class="cat-tile__n">A</span>
+            <b>Construction, Infrastructure &amp; Engineering</b>
+            <small>Construction, expansion joints, interiors, roadworks and civil execution.</small>
+            <span class="cat-tile__go">4 services →</span>
+          </button>
+          <button class="cat-tile reveal" data-f="green" type="button">
+            <span class="cat-tile__illo" data-illo="afforest"></span>
+            <span class="cat-tile__n">B</span>
+            <b>Landscape, Ecology &amp; Environment</b>
+            <small>Landscaping, bio-pools, afforestation, urban forestry and solar.</small>
+            <span class="cat-tile__go">5 services →</span>
+          </button>
+          <button class="cat-tile reveal" data-f="services" type="button">
+            <span class="cat-tile__illo" data-illo="procurement"></span>
+            <span class="cat-tile__n">C</span>
+            <b>Commercial &amp; Project Services</b>
+            <small>Procurement, commercial support and facility and asset maintenance.</small>
+            <span class="cat-tile__go">2 services →</span>
+          </button>
         </div>
 
         <header class="sub__head reveal"><p class="eyebrow">All Solutions</p><h3>Eleven services, one delivery partner</h3></header>

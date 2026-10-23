@@ -6,7 +6,7 @@
   const links = document.getElementById('navLinks');
 
   // Split hero headline into animated words (keeps the gradient span intact)
-  document.querySelectorAll('.split').forEach((el) => {
+  document.querySelectorAll('.split, .split-on-view').forEach((el) => {
     let i = 0;
     const wrapWords = (text, cls) => text.split(/(\s+)/).map((part) => {
       if (!part.trim()) return document.createTextNode(part);
@@ -90,6 +90,17 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     navMap.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
+  }
+
+  // Headlines that animate word-by-word when scrolled into view
+  const splitViews = document.querySelectorAll('.split-on-view');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const so = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-visible'); so.unobserve(e.target); }
+    }), { threshold: 0.4 });
+    splitViews.forEach((el) => so.observe(el));
+  } else {
+    splitViews.forEach((el) => el.classList.add('is-visible'));
   }
 
   // Reveal on scroll
