@@ -527,20 +527,10 @@
       <div class="wrap">
         <div class="story" id="story">
           <div class="story__pin">
-            <div class="story__copy">
+            <header class="story__head">
               <p class="eyebrow"><span class="eyebrow__n">05</span> End-to-End Solutions</p>
               <h2 class="sec__title">From groundwork to <span class="grad">green spaces</span></h2>
-              <ol class="story__steps" id="storySteps">
-                <li data-from="0" data-to="0.15"><span class="story__n">01</span><div><h3>Survey &amp; plan</h3><p>Every project starts with a precise site plan and the right groundwork.</p></div></li>
-                <li data-from="0.15" data-to="0.3"><span class="story__n">02</span><div><h3>Earthworks &amp; roads</h3><p>Excavation, backfilling, site preparation, roadworks and civil execution.</p></div></li>
-                <li data-from="0.3" data-to="0.48"><span class="story__n">03</span><div><h3>Build</h3><p>Residential and high-rise construction, expansion joints and interior fit-outs.</p></div></li>
-                <li data-from="0.48" data-to="0.66"><span class="story__n">04</span><div><h3>Landscape</h3><p>Gardens, lawns, pathways, hardscape and softscape for every kind of campus.</p></div></li>
-                <li data-from="0.66" data-to="0.82"><span class="story__n">05</span><div><h3>Afforestation &amp; urban forestry</h3><p>Native forests, green belts and tree-lined avenues that grow with the city.</p></div></li>
-                <li data-from="0.82" data-to="0.92"><span class="story__n">06</span><div><h3>Water &amp; energy</h3><p>Natural bio-pools and solar power for cleaner, self-sustaining spaces.</p></div></li>
-                <li data-from="0.92" data-to="1.01"><span class="story__n">07</span><div><h3>Deliver &amp; maintain</h3><p>Procurement, commercial support and long-term facility and asset care.</p></div></li>
-              </ol>
-              <div class="story__meter" aria-hidden="true"><span>Site progress</span><b id="storyPct">0%</b><i><em id="storyBar"></em></i></div>
-            </div>
+            </header>
             <div class="story__stage" aria-hidden="true">
               <div class="story__svg" id="storySvg"></div>
               <p class="story__hint" id="storyHint">Scroll to build ↓</p>
@@ -548,26 +538,74 @@
           </div>
         </div>
 
-        <header class="sub__head reveal"><p class="eyebrow">All Solutions</p><h3>Eleven services, one delivery partner</h3></header>
-        <div class="sfilters reveal" role="group" aria-label="Filter services">
-          <button class="sfilter is-active" data-f="all" type="button" aria-pressed="true">All <span>11</span></button>
-          <button class="sfilter" data-f="infra" type="button" aria-pressed="false">Construction &amp; Infrastructure <span>4</span></button>
-          <button class="sfilter" data-f="green" type="button" aria-pressed="false">Landscape &amp; Environment <span>5</span></button>
-          <button class="sfilter" data-f="services" type="button" aria-pressed="false">Project Services <span>2</span></button>
-        </div>
-        <div class="cards cards--3 sol-cards" id="solCards">
-          <article class="card tilt reveal" data-cat="infra" id="sol-construction"><div class="card__illo" data-illo="excavator"></div><div class="card__body"><span class="card__num">A · 01</span><h3>Construction &amp; Infrastructure</h3><p class="card__desc">Roadworks and road infrastructure, earthworks, excavation and backfilling, demolition and site preparation, civil construction, and residential and high-rise construction.</p></div></article>
-          <article class="card tilt reveal" data-cat="infra" id="sol-joint"><div class="card__illo" data-illo="joint"></div><div class="card__body"><span class="card__num">A · 02</span><h3>Expansion Joint Solutions</h3><p class="card__desc">Building and bridge expansion joint systems, project-specific supply and installation, and technical coordination and execution.</p></div></article>
-          <article class="card tilt reveal" data-cat="infra" id="sol-interior"><div class="card__illo" data-illo="interior"></div><div class="card__body"><span class="card__num">A · 03</span><h3>Interior Solutions &amp; Execution</h3><p class="card__desc">Residential and commercial interior execution, finishing works, fit-outs and renovation, and material and contractor coordination.</p></div></article>
-          <article class="card tilt reveal" data-cat="infra" id="sol-roads"><div class="card__illo" data-illo="roadworks"></div><div class="card__body"><span class="card__num">A · 04</span><h3>Roadworks &amp; Civil Execution</h3><p class="card__desc">Road construction and rehabilitation, earthworks and excavation, backfilling and site development, demolition and civil infrastructure execution.</p></div></article>
-          <article class="card tilt reveal" data-cat="green" id="sol-landscape"><div class="card__illo" data-illo="landscape"></div><div class="card__body"><span class="card__num">B · 01</span><h3>Landscape Design &amp; Development</h3><p class="card__desc">Residential, commercial, institutional and campus landscaping, hardscape and softscape, pathways, lawns and gardens.</p></div></article>
-          <article class="card tilt reveal" data-cat="green" id="sol-biopool"><div class="card__illo" data-illo="biopool"></div><div class="card__body"><span class="card__num">B · 02</span><h3>Bio-Pools &amp; Natural Water Features</h3><p class="card__desc">Natural and ecological swimming pools, plant-based water regeneration, ecological ponds and natural filtration.</p></div></article>
-          <article class="card tilt reveal" data-cat="green" id="sol-afforest"><div class="card__illo" data-illo="afforest"></div><div class="card__body"><span class="card__num">B · 03</span><h3>Large-Scale Afforestation</h3><p class="card__desc">Reforestation, native species plantation, degraded-land restoration, and sapling establishment with survival monitoring.</p></div></article>
-          <article class="card tilt reveal" data-cat="green" id="sol-urban"><div class="card__illo" data-illo="urbanforest"></div><div class="card__body"><span class="card__num">B · 04</span><h3>Urban Forestry &amp; Plantation</h3><p class="card__desc">Roadside and avenue plantation, urban green belts, campus and township plantation, and urban canopy development.</p></div></article>
-          <article class="card tilt reveal" data-cat="green" id="sol-solar"><div class="card__illo" data-illo="solar"></div><div class="card__body"><span class="card__num">B · 05</span><h3>Solar &amp; Renewable Energy</h3><p class="card__desc">Rooftop, commercial and industrial solar, solar EPC coordination, renewable integration and feasibility studies.</p></div></article>
-          <article class="card tilt reveal" data-cat="services" id="sol-procure"><div class="card__illo" data-illo="procurement"></div><div class="card__body"><span class="card__num">C · 01</span><h3>Construction Procurement &amp; Commercial Support</h3><p class="card__desc">Material sourcing and procurement, specialist contractor sourcing, vendor coordination, BOQ-based procurement, commercial documentation, and invoicing and billing coordination aligned with project schedules.</p></div></article>
-          <article class="card tilt reveal" data-cat="services" id="sol-maintain"><div class="card__illo" data-illo="maintenance"></div><div class="card__body"><span class="card__num">C · 02</span><h3>Facility, Landscape &amp; Asset Maintenance</h3><p class="card__desc">Building and campus maintenance coordination, landscape and tree-care maintenance, irrigation upkeep, facility vendor coordination and long-term maintenance programmes.</p></div></article>
-          <a href="#contact" class="card card--cta tilt reveal" data-cat="all"><div class="card__illo" data-illo="mail"></div><div class="card__body"><span class="card__num">Let's talk</span><h3>Have a project in mind?</h3><p class="card__desc">Tell us about your site, timeline and goals, and we'll put together the right mix of construction, environmental and technology services.</p><span class="card__go">Plan your project →</span></div></a>
+        <header class="sub__head reveal"><p class="eyebrow">Our Solutions</p><h3>Eleven services, one delivery partner</h3></header>
+        <div class="vids" id="vids">
+          <article class="vid reveal" tabindex="0" data-cat="infra">
+            <div class="vid__screen" data-video="construction" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Construction</span>
+            <div class="vid__cap"><h3>Construction &amp; Infrastructure</h3><p>Earthworks, excavation, site preparation, civil construction, and residential and high-rise construction.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="infra">
+            <div class="vid__screen" data-video="joint" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Construction</span>
+            <div class="vid__cap"><h3>Expansion Joint Solutions</h3><p>Building and bridge expansion joint systems, with project-specific supply, installation and technical execution.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="infra">
+            <div class="vid__screen" data-video="interior" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Construction</span>
+            <div class="vid__cap"><h3>Interior Solutions &amp; Execution</h3><p>Residential and commercial interiors, finishing works, fit-outs and renovation, with material and contractor coordination.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="infra">
+            <div class="vid__screen" data-video="roads" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Construction</span>
+            <div class="vid__cap"><h3>Roadworks &amp; Civil Execution</h3><p>Road construction and rehabilitation, earthworks, backfilling, site development and civil infrastructure execution.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="green">
+            <div class="vid__screen" data-video="landscape" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Landscape &amp; Ecology</span>
+            <div class="vid__cap"><h3>Landscape Design &amp; Development</h3><p>Residential, commercial, institutional and campus landscaping, hardscape and softscape, pathways, lawns and gardens.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="green">
+            <div class="vid__screen" data-video="biopool" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Landscape &amp; Ecology</span>
+            <div class="vid__cap"><h3>Bio-Pools &amp; Natural Water Features</h3><p>Natural and ecological swimming pools, plant-based water regeneration, ecological ponds and natural filtration.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="green">
+            <div class="vid__screen" data-video="afforest" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Landscape &amp; Ecology</span>
+            <div class="vid__cap"><h3>Large-Scale Afforestation</h3><p>Reforestation, native species plantation, degraded-land restoration, and sapling establishment with survival monitoring.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="green">
+            <div class="vid__screen" data-video="urban" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Landscape &amp; Ecology</span>
+            <div class="vid__cap"><h3>Urban Forestry &amp; Plantation</h3><p>Roadside and avenue plantation, urban green belts, campus and township plantation, and urban canopy development.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="green">
+            <div class="vid__screen" data-video="solar" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Landscape &amp; Ecology</span>
+            <div class="vid__cap"><h3>Solar &amp; Renewable Energy</h3><p>Rooftop, commercial and industrial solar, solar EPC coordination, renewable integration and feasibility studies.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="services">
+            <div class="vid__screen" data-video="procure" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Project Services</span>
+            <div class="vid__cap"><h3>Construction Procurement &amp; Commercial Support</h3><p>Material sourcing, specialist contractors, vendor coordination, BOQ-based procurement, documentation, invoicing and billing.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
+          <article class="vid reveal" tabindex="0" data-cat="services">
+            <div class="vid__screen" data-video="maintain" aria-hidden="true"></div>
+            <span class="vid__badge"><i></i>Project Services</span>
+            <div class="vid__cap"><h3>Facility, Landscape &amp; Asset Maintenance</h3><p>Building, campus and landscape maintenance, tree care, irrigation upkeep and long-term maintenance programmes.</p></div>
+            <span class="vid__bar" aria-hidden="true"><i></i></span>
+          </article>
         </div>
         <p class="sec__cta reveal"><a href="#contact" class="btn btn--primary magnetic">Plan Your Project</a></p>
       </div>
@@ -653,7 +691,7 @@
   <script src="js/illos.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/story.js" defer></script>
-  <script src="js/solutions.js" defer></script>
+  <script src="js/videos.js" defer></script>
   <script type="module" src="js/scenes.js"></script>
 </body>
 </html>

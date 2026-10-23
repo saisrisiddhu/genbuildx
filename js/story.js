@@ -40,7 +40,6 @@
         <rect ${a('draw', 0.07, 0.14)} pathLength="1" x="940" y="470" width="220" height="60"/>
         <path ${a('draw', 0.08, 0.15)} pathLength="1" d="M470 420h200M480 420v50M660 420v50"/>
       </g>
-      <text x="40" y="660" class="st-plantxt" ${a('fade', 0.03, 0.1)}>SITE PLAN · GENBUILDX</text>
     </g>
 
     <!-- earthworks -->
@@ -110,9 +109,6 @@
     x0: Number(el.dataset.x0 || 0),
     x1: Number(el.dataset.x1 || 0),
   }));
-  const steps = [...document.querySelectorAll('#storySteps li')];
-  const pct = document.getElementById('storyPct');
-  const bar = document.getElementById('storyBar');
   const hint = document.getElementById('storyHint');
   const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
@@ -136,15 +132,6 @@
         default: break;
       }
     });
-    let active = 0;
-    steps.forEach((li, i) => { if (p >= Number(li.dataset.from)) active = i; });
-    steps.forEach((li, i) => {
-      li.classList.toggle('is-active', i === active);
-      li.classList.toggle('is-done', i < active);
-    });
-    const v = Math.round(p * 100);
-    pct.textContent = `${v}%`;
-    bar.style.transform = `scaleX(${p})`;
     hint.classList.toggle('is-hidden', p > 0.04);
   };
 
